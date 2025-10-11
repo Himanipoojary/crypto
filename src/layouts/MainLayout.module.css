@@ -1,0 +1,279 @@
+/* Main App Container - Full height flex layout */
+.appContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  position: relative;
+}
+
+/* Main Content Area - Flexible to fill available space */
+.mainContent {
+  flex: 1;
+  width: 100%;
+  padding: 2rem 0;
+  animation: fadeIn 0.5s ease-in;
+  position: relative;
+}
+
+/* Fade in animation for page transitions */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Content Wrapper - Centers and constrains content width */
+.contentWrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+/* Tablet Devices (1024px and below) */
+@media (max-width: 1024px) {
+  .contentWrapper {
+    max-width: 960px;
+    padding: 0 1.5rem;
+  }
+
+  .mainContent {
+    padding: 1.5rem 0;
+  }
+}
+
+/* Mobile Devices (768px and below) */
+@media (max-width: 768px) {
+  .contentWrapper {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  .mainContent {
+    padding: 1rem 0;
+  }
+}
+
+/* Small Mobile Devices (480px and below) */
+@media (max-width: 480px) {
+  .contentWrapper {
+    padding: 0 0.75rem;
+  }
+
+  .mainContent {
+    padding: 0.75rem 0;
+  }
+}
+
+/* Loading State - Center spinner or loading indicator */
+.mainContent.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.loadingSpinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #e2e8f0;
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error State - Center error message */
+.mainContent.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.errorContainer {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 500px;
+}
+
+.errorIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #f56565;
+}
+
+.errorTitle {
+  font-size: 1.5rem;
+  color: #2d3748;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.errorMessage {
+  color: #718096;
+  line-height: 1.6;
+}
+
+/* Print Styles - Remove backgrounds and optimize for printing */
+@media print {
+  .appContainer {
+    background: white;
+  }
+
+  .mainContent {
+    padding: 0;
+  }
+
+  .contentWrapper {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  /* Hide non-essential elements when printing */
+  .mainContent.loading,
+  .mainContent.error {
+    display: none;
+  }
+}
+
+/* Accessibility - Reduced Motion for users with motion sensitivity */
+@media (prefers-reduced-motion: reduce) {
+  .mainContent {
+    animation: none;
+  }
+
+  .loadingSpinner {
+    animation: none;
+    border-top-color: #667eea;
+  }
+}
+
+/* Dark Mode Support - Optional but recommended */
+@media (prefers-color-scheme: dark) {
+  .appContainer {
+    background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  }
+
+  .errorContainer {
+    background: #2d3748;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .errorTitle {
+    color: #e2e8f0;
+  }
+
+  .errorMessage {
+    color: #a0aec0;
+  }
+}
+
+/* High Contrast Mode for better accessibility */
+@media (prefers-contrast: high) {
+  .appContainer {
+    background: white;
+  }
+
+  .contentWrapper {
+    border: 2px solid black;
+  }
+}
+
+/* Scrollbar Styling (Webkit browsers) */
+.mainContent::-webkit-scrollbar {
+  width: 10px;
+}
+
+.mainContent::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.mainContent::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 10px;
+}
+
+.mainContent::-webkit-scrollbar-thumb:hover {
+  background: #5568d3;
+}
+
+/* Focus visible styles for keyboard navigation */
+.contentWrapper:focus-visible {
+  outline: 3px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Skip to main content link (accessibility) */
+.skipToContent {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #667eea;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 0 0 4px 0;
+  z-index: 9999;
+  transition: top 0.3s ease;
+}
+
+.skipToContent:focus {
+  top: 0;
+}
+
+/* Container for breadcrumb navigation (optional) */
+.breadcrumbContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem 0;
+}
+
+@media (max-width: 768px) {
+  .breadcrumbContainer {
+    padding: 0.75rem 1rem 0;
+  }
+}
+
+/* Utility classes for special layouts */
+.fullWidth {
+  max-width: 100%;
+  padding: 0;
+}
+
+.narrow {
+  max-width: 800px;
+}
+
+.wide {
+  max-width: 1400px;
+}
+
+/* Grid layout option */
+.gridLayout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .gridLayout {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

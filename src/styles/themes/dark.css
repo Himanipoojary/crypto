@@ -1,0 +1,109 @@
+/* ==========================================
+   Dark Theme
+   Auto-applies based on system preference
+   ========================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Colors */
+    --color-text: #e2e8f0;
+    --color-text-secondary: #a0aec0;
+    --color-text-muted: #718096;
+    
+    --color-background: #1a202c;
+    --color-background-secondary: #2d3748;
+    --color-background-tertiary: #374151;
+    
+    --color-border: #4a5568;
+    --color-border-light: #374151;
+    --color-border-dark: #718096;
+    
+    --color-link: #7c8ff0;
+    --color-link-hover: #a5b4fc;
+    
+    --color-code-bg: #171923;
+    --color-code-text: #cbd5e0;
+    
+    --color-scrollbar-track: #2d3748;
+    --color-scrollbar-thumb: #4a5568;
+    --color-scrollbar-thumb-hover: #718096;
+    
+    /* Adjusted colors for dark mode */
+    --color-primary: #7c8ff0;
+    --color-primary-light: #a5b4fc;
+    --color-primary-dark: #667eea;
+    
+    --color-gray-50: #374151;
+    --color-gray-100: #4a5568;
+    --color-gray-200: #718096;
+    
+    /* Shadows (softer in dark mode) */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.5);
+    --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.6);
+    
+    /* Component adjustments */
+    --card-background: #2d3748;
+    --input-background: #374151;
+    --button-hover-opacity: 1.1;
+  }
+  
+  /* Image adjustments for dark mode */
+  img {
+    opacity: 0.9;
+  }
+  
+  img:hover {
+    opacity: 1;
+  }
+}
+
+/* Manual dark mode toggle (when using data-theme attribute) */
+[data-theme="dark"] {
+  /* Same as media query above */
+  --color-text: #e2e8f0;
+  --color-text-secondary: #a0aec0;
+  --color-text-muted: #718096;
+  
+  --color-background: #1a202c;
+  --color-background-secondary: #2d3748;
+  --color-background-tertiary: #374151;
+  
+  --color-border: #4a5568;
+  --color-border-light: #374151;
+  --color-border-dark: #718096;
+  
+  --color-link: #7c8ff0;
+  --color-link-hover: #a5b4fc;
+  
+  --color-code-bg: #171923;
+  --color-code-text: #cbd5e0;
+  
+  --color-scrollbar-track: #2d3748;
+  --color-scrollbar-thumb: #4a5568;
+  --color-scrollbar-thumb-hover: #718096;
+  
+  --color-primary: #7c8ff0;
+  --color-primary-light: #a5b4fc;
+  --color-primary-dark: #667eea;
+  
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.5);
+  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.6);
+  
+  --card-background: #2d3748;
+  --input-background: #374151;
+  --button-hover-opacity: 1.1;
+}
+
+[data-theme="dark"] img {
+  opacity: 0.9;
+}
+
+[data-theme="dark"] img:hover {
+  opacity: 1;
+}

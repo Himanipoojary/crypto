@@ -1,0 +1,173 @@
+.container {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.success {
+  border-left: 6px solid #48bb78;
+}
+
+.failure {
+  border-left: 6px solid #f56565;
+}
+
+.iconContainer {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.icon {
+  font-size: 4rem;
+  animation: bounce 0.6s ease;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.title {
+  font-size: 1.75rem;
+  color: #2d3748;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.resultBox {
+  background: #f7fafc;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.resultItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.resultItem:last-child {
+  margin-bottom: 0;
+}
+
+.resultLabel {
+  font-weight: 600;
+  color: #4a5568;
+  font-size: 0.95rem;
+}
+
+.hash,
+.crackedPassword {
+  background: #2d3748;
+  color: #4fd1c5;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  word-break: break-all;
+}
+
+.crackedPassword {
+  color: #48bb78;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.statBox {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(102, 126, 234, 0.3);
+}
+
+.statNumber {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.statLabel {
+  display: block;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.warning {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: #fef5e7;
+  border: 2px solid #f39c12;
+  border-radius: 8px;
+}
+
+.warningIcon {
+  font-size: 1.5rem;
+}
+
+.warningText {
+  margin: 0;
+  color: #7d6608;
+  line-height: 1.6;
+}
+
+.failureMessage {
+  color: #4a5568;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+
+.failureList {
+  background: #f7fafc;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  color: #4a5568;
+  line-height: 1.8;
+}
+
+.failureList li {
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .crackedPassword {
+    font-size: 1rem;
+  }
+}

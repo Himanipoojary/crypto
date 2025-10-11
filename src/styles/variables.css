@@ -1,0 +1,206 @@
+/* ==========================================
+   CSS Custom Properties (Variables)
+   Global design tokens for the application
+   ========================================== */
+
+:root {
+  /* ==========================================
+     Color Palette - Light Mode (Default)
+     ========================================== */
+  
+  /* Primary Colors */
+  --color-primary: #667eea;
+  --color-primary-light: #7c8ff0;
+  --color-primary-dark: #5568d3;
+  --color-primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  
+  /* Secondary Colors */
+  --color-secondary: #764ba2;
+  --color-secondary-light: #8b5fb8;
+  --color-secondary-dark: #61398c;
+  
+  /* Neutral Colors */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-gray-50: #f7fafc;
+  --color-gray-100: #edf2f7;
+  --color-gray-200: #e2e8f0;
+  --color-gray-300: #cbd5e0;
+  --color-gray-400: #a0aec0;
+  --color-gray-500: #718096;
+  --color-gray-600: #4a5568;
+  --color-gray-700: #2d3748;
+  --color-gray-800: #1a202c;
+  --color-gray-900: #171923;
+  
+  /* Semantic Colors */
+  --color-success: #48bb78;
+  --color-success-light: #68d391;
+  --color-success-dark: #38a169;
+  
+  --color-warning: #f6ad55;
+  --color-warning-light: #fbd38d;
+  --color-warning-dark: #ed8936;
+  
+  --color-error: #f56565;
+  --color-error-light: #fc8181;
+  --color-error-dark: #e53e3e;
+  
+  --color-info: #4299e1;
+  --color-info-light: #63b3ed;
+  --color-info-dark: #3182ce;
+  
+  /* Application Colors */
+  --color-text: #2d3748;
+  --color-text-secondary: #718096;
+  --color-text-muted: #a0aec0;
+  
+  --color-background: #f5f7fa;
+  --color-background-secondary: #ffffff;
+  --color-background-tertiary: #f7fafc;
+  
+  --color-border: #e2e8f0;
+  --color-border-light: #edf2f7;
+  --color-border-dark: #cbd5e0;
+  
+  --color-link: #667eea;
+  --color-link-hover: #5568d3;
+  
+  --color-focus: #667eea;
+  --color-selection-bg: #667eea;
+  --color-selection-text: #ffffff;
+  
+  --color-code-bg: #2d3748;
+  --color-code-text: #a0aec0;
+  
+  /* Scrollbar Colors */
+  --color-scrollbar-track: #f1f1f1;
+  --color-scrollbar-thumb: #667eea;
+  --color-scrollbar-thumb-hover: #5568d3;
+  
+  /* ==========================================
+     Typography
+     ========================================== */
+  
+  /* Font Families */
+  --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-family-heading: var(--font-family-base);
+  --font-family-mono: 'Courier New', 'Consolas', 'Monaco', monospace;
+  
+  /* Font Sizes */
+  --font-size-xs: 0.75rem;      /* 12px */
+  --font-size-sm: 0.875rem;     /* 14px */
+  --font-size-base: 1rem;       /* 16px */
+  --font-size-lg: 1.125rem;     /* 18px */
+  --font-size-xl: 1.25rem;      /* 20px */
+  --font-size-2xl: 1.5rem;      /* 24px */
+  --font-size-3xl: 1.875rem;    /* 30px */
+  --font-size-4xl: 2.25rem;     /* 36px */
+  --font-size-5xl: 3rem;        /* 48px */
+  --font-size-6xl: 3.75rem;     /* 60px */
+  
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.7;
+  --line-height-loose: 2;
+  
+  /* ==========================================
+     Spacing
+     ========================================== */
+  
+  --spacing-xs: 0.25rem;        /* 4px */
+  --spacing-sm: 0.5rem;         /* 8px */
+  --spacing-md: 1rem;           /* 16px */
+  --spacing-lg: 1.5rem;         /* 24px */
+  --spacing-xl: 2rem;           /* 32px */
+  --spacing-2xl: 3rem;          /* 48px */
+  --spacing-3xl: 4rem;          /* 64px */
+  --spacing-4xl: 6rem;          /* 96px */
+  
+  /* ==========================================
+     Border Radius
+     ========================================== */
+  
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+  
+  /* ==========================================
+     Shadows
+     ========================================== */
+  
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.15);
+  --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+  
+  /* ==========================================
+     Z-Index Scale
+     ========================================== */
+  
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal-backdrop: 1040;
+  --z-index-modal: 1050;
+  --z-index-popover: 1060;
+  --z-index-tooltip: 1070;
+  
+  /* ==========================================
+     Transitions
+     ========================================== */
+  
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+  
+  /* ==========================================
+     Breakpoints (for reference in JS)
+     ========================================== */
+  
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  
+  /* ==========================================
+     Layout
+     ========================================== */
+  
+  --container-max-width: 1200px;
+  --container-padding: 2rem;
+  
+  --header-height: 70px;
+  --footer-height: 200px;
+}
+
+/* ==========================================
+   Responsive Font Sizes
+   ========================================== */
+
+@media (max-width: 768px) {
+  :root {
+    --font-size-3xl: 1.5rem;    /* 24px */
+    --font-size-4xl: 1.875rem;  /* 30px */
+    --font-size-5xl: 2.25rem;   /* 36px */
+    --font-size-6xl: 3rem;      /* 48px */
+    
+    --container-padding: 1rem;
+  }
+}
