@@ -24,14 +24,6 @@ const Footer = () => {
             <li><a href="/prevention">Prevention</a></li>
           </ul>
         </div>
-
-        <div className={styles.section}>
-          <h3 className={styles.heading}>Disclaimer</h3>
-          <p className={styles.text}>
-            ⚠️ For educational purposes only. Do not use these techniques 
-            for unauthorized access or malicious activities.
-          </p>
-        </div>
       </div>
 
       <div className={styles.bottom}>
