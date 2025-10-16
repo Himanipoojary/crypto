@@ -1,16 +1,67 @@
 .container {
-  background: white;
+  background: rgba(0, 20, 0, 0.8);
+  border: 2px solid #00ff00;
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.4);
+  backdrop-filter: blur(10px);
+  font-family: 'Courier New', monospace;
+  position: relative;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ff00, transparent);
+  animation: scanLine 3s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes scanLine {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(300px);
+  }
 }
 
 .title {
   font-size: 1.5rem;
-  color: #2d3748;
+  color: #00ff00;
   font-weight: 600;
   margin-bottom: 1.5rem;
   text-align: center;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ff00, transparent);
+  margin: 0.5rem auto 0;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
 }
 
 .speedDisplay {
@@ -22,14 +73,79 @@
 .speedCircle {
   width: 200px;
   height: 200px;
-  border: 8px solid #e2e8f0;
+  border: 8px solid rgba(0, 255, 0, 0.3);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   transition: all 0.3s ease;
-  background: radial-gradient(circle, #f7fafc 0%, #edf2f7 100%);
+  background: radial-gradient(circle, rgba(0, 40, 0, 0.8) 0%, rgba(0, 20, 0, 0.9) 100%);
+  box-shadow: 
+    0 0 30px rgba(0, 255, 0, 0.4),
+    inset 0 0 30px rgba(0, 255, 0, 0.2);
+  animation: circleRotate 3s ease-in-out infinite;
+}
+
+@keyframes circleRotate {
+  0%, 100% {
+    border-color: rgba(0, 255, 0, 0.3);
+    box-shadow: 
+      0 0 30px rgba(0, 255, 0, 0.4),
+      inset 0 0 30px rgba(0, 255, 0, 0.2);
+  }
+  50% {
+    border-color: rgba(0, 255, 0, 0.6);
+    box-shadow: 
+      0 0 50px rgba(0, 255, 0, 0.6),
+      inset 0 0 50px rgba(0, 255, 0, 0.3);
+  }
+}
+
+.speedCircle::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border-radius: 50%;
+  border: 2px solid #00ff00;
+  opacity: 0.5;
+  animation: ringPulse 2s ease-in-out infinite;
+}
+
+@keyframes ringPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+.speedCircle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180px;
+  height: 180px;
+  border: 1px solid rgba(0, 255, 0, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: innerRing 4s linear infinite;
+}
+
+@keyframes innerRing {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 .speedValue {
@@ -37,19 +153,45 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .speedNumber {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #2d3748;
+  color: #00ff00;
   line-height: 1;
+  font-family: 'Courier New', monospace;
+  text-shadow: 
+    0 0 10px rgba(0, 255, 0, 0.8),
+    0 0 20px rgba(0, 255, 0, 0.5),
+    0 0 30px rgba(0, 255, 0, 0.3);
+  animation: numberGlow 2s ease-in-out infinite;
+}
+
+@keyframes numberGlow {
+  0%, 100% {
+    text-shadow: 
+      0 0 10px rgba(0, 255, 0, 0.8),
+      0 0 20px rgba(0, 255, 0, 0.5),
+      0 0 30px rgba(0, 255, 0, 0.3);
+  }
+  50% {
+    text-shadow: 
+      0 0 15px rgba(0, 255, 0, 1),
+      0 0 30px rgba(0, 255, 0, 0.7),
+      0 0 45px rgba(0, 255, 0, 0.5);
+  }
 }
 
 .speedUnit {
   font-size: 0.875rem;
-  color: #718096;
+  color: #00dd00;
   margin-top: 0.5rem;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+  letter-spacing: 1px;
 }
 
 .metrics {
@@ -64,21 +206,34 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 1rem;
-  background: #f7fafc;
+  background: rgba(0, 30, 0, 0.6);
+  border: 1px solid rgba(0, 255, 0, 0.3);
   border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.1);
+}
+
+.metricItem:hover {
+  background: rgba(0, 40, 0, 0.8);
+  border-color: rgba(0, 255, 0, 0.6);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3), inset 0 0 15px rgba(0, 255, 0, 0.15);
+  transform: translateX(5px);
 }
 
 .metricLabel {
   font-weight: 600;
-  color: #4a5568;
+  color: #00dd00;
   font-size: 0.95rem;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
 }
 
 .metricValue {
   font-size: 1rem;
-  color: #2d3748;
+  color: #00ff00;
   font-weight: 700;
   font-family: 'Courier New', monospace;
+  text-shadow: 0 0 8px rgba(0, 255, 0, 0.8);
 }
 
 .statusBar {
@@ -86,36 +241,135 @@
   align-items: center;
   gap: 0.75rem;
   padding: 1rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, rgba(0, 255, 0, 0.2) 0%, rgba(0, 170, 0, 0.3) 100%);
+  border: 2px solid #00ff00;
   border-radius: 8px;
-  color: white;
+  color: #00ff00;
   margin-top: 1rem;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+  animation: statusGlow 2s ease-in-out infinite;
+}
+
+@keyframes statusGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.6);
+  }
 }
 
 .pulse {
   width: 12px;
   height: 12px;
-  background: white;
+  background: #00ff00;
   border-radius: 50%;
-  animation: pulse 1.5s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+  animation: pulseDot 1.5s ease-in-out infinite;
+  position: relative;
 }
 
-@keyframes pulse {
+@keyframes pulseDot {
   0%, 100% {
     transform: scale(1);
     opacity: 1;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
   }
   50% {
     transform: scale(1.3);
     opacity: 0.7;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 1);
+  }
+}
+
+.pulse::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid #00ff00;
+  border-radius: 50%;
+  opacity: 0;
+  animation: pulseRing 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
   }
 }
 
 .statusText {
   font-weight: 600;
   font-size: 0.95rem;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 8px rgba(0, 255, 0, 0.8);
+  letter-spacing: 0.5px;
 }
 
+/* Speed indicator bars */
+.speedBars {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+  height: 40px;
+  margin: 1rem auto;
+  justify-content: center;
+}
+
+.speedBar {
+  width: 8px;
+  background: #00ff00;
+  border-radius: 4px 4px 0 0;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
+  animation: barBounce 1s ease-in-out infinite;
+  opacity: 0.8;
+}
+
+.speedBar:nth-child(1) { height: 20%; animation-delay: 0s; }
+.speedBar:nth-child(2) { height: 40%; animation-delay: 0.1s; }
+.speedBar:nth-child(3) { height: 60%; animation-delay: 0.2s; }
+.speedBar:nth-child(4) { height: 80%; animation-delay: 0.3s; }
+.speedBar:nth-child(5) { height: 100%; animation-delay: 0.4s; }
+
+@keyframes barBounce {
+  0%, 100% {
+    transform: scaleY(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scaleY(1.2);
+    opacity: 1;
+  }
+}
+
+/* Idle state styling */
+.idle .speedCircle {
+  border-color: rgba(0, 255, 0, 0.2);
+  animation: none;
+}
+
+.idle .speedNumber {
+  color: #00aa00;
+  animation: none;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.4);
+}
+
+.idle .statusBar {
+  background: rgba(0, 100, 0, 0.3);
+  border-color: #00aa00;
+  animation: none;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .container {
     padding: 1.5rem;
@@ -124,10 +378,20 @@
   .speedCircle {
     width: 160px;
     height: 160px;
+    border-width: 6px;
+  }
+
+  .speedCircle::after {
+    width: 140px;
+    height: 140px;
   }
 
   .speedNumber {
     font-size: 2rem;
+  }
+
+  .speedUnit {
+    font-size: 0.75rem;
   }
 
   .metricItem {
@@ -135,4 +399,80 @@
     align-items: flex-start;
     gap: 0.5rem;
   }
+
+  .title {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .speedCircle {
+    width: 140px;
+    height: 140px;
+  }
+
+  .speedNumber {
+    font-size: 1.75rem;
+  }
+
+  .metricLabel,
+  .metricValue,
+  .statusText {
+    font-size: 0.85rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .container::before,
+  .speedCircle,
+  .speedCircle::before,
+  .speedCircle::after,
+  .speedNumber,
+  .statusBar,
+  .pulse,
+  .pulse::before,
+  .speedBar {
+    animation: none !important;
+  }
+
+  .metricItem:hover {
+    transform: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .container,
+  .speedCircle,
+  .metricItem,
+  .statusBar {
+    border-width: 3px;
+  }
+
+  .title,
+  .speedNumber,
+  .metricLabel,
+  .metricValue,
+  .statusText {
+    text-shadow: none;
+  }
+}
+
+/* Active/High Speed State */
+.highSpeed .speedCircle {
+  border-color: rgba(0, 255, 0, 0.8);
+  animation: circleRotate 1s ease-in-out infinite;
+}
+
+.highSpeed .speedNumber {
+  animation: numberGlow 1s ease-in-out infinite;
+}
+
+.highSpeed .statusBar {
+  animation: statusGlow 1s ease-in-out infinite;
 }
