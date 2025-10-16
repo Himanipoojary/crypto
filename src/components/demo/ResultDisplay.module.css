@@ -1,29 +1,47 @@
 .container {
-  background: white;
+  background: rgba(0, 20, 0, 0.8);
+  border: 2px solid #00ff00;
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.4);
   margin-bottom: 2rem;
-  animation: slideIn 0.5s ease;
+  animation: slideInGlow 0.5s ease;
+  backdrop-filter: blur(10px);
+  font-family: 'Courier New', monospace;
+  position: relative;
 }
 
-@keyframes slideIn {
+@keyframes slideInGlow {
   from {
     opacity: 0;
     transform: translateY(20px);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.4);
   }
 }
 
 .success {
-  border-left: 6px solid #48bb78;
+  border-left: 6px solid #00ff00;
+  box-shadow: 0 0 40px rgba(0, 255, 0, 0.6), inset -6px 0 20px rgba(0, 255, 0, 0.2);
+  animation: successPulse 2s ease-in-out infinite;
+}
+
+@keyframes successPulse {
+  0%, 100% {
+    box-shadow: 0 0 40px rgba(0, 255, 0, 0.6), inset -6px 0 20px rgba(0, 255, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 60px rgba(0, 255, 0, 0.8), inset -6px 0 30px rgba(0, 255, 0, 0.3);
+  }
 }
 
 .failure {
-  border-left: 6px solid #f56565;
+  border-left: 6px solid #ff3333;
+  box-shadow: 0 0 30px rgba(255, 51, 51, 0.4), inset -6px 0 20px rgba(255, 51, 51, 0.2);
 }
 
 .iconContainer {
@@ -33,27 +51,69 @@
 
 .icon {
   font-size: 4rem;
-  animation: bounce 0.6s ease;
+  filter: drop-shadow(0 0 20px rgba(0, 255, 0, 0.8));
+  animation: bounceGlow 0.6s ease;
 }
 
-@keyframes bounce {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
+@keyframes bounceGlow {
+  0%, 100% { 
+    transform: scale(1);
+    filter: drop-shadow(0 0 20px rgba(0, 255, 0, 0.8));
+  }
+  50% { 
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 40px rgba(0, 255, 0, 1));
+  }
+}
+
+.success .icon {
+  color: #00ff00;
+  animation: bounceGlow 0.6s ease, successRotate 2s ease-in-out infinite;
+}
+
+@keyframes successRotate {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(10deg) scale(1.05);
+  }
+}
+
+.failure .icon {
+  color: #ff5555;
+  filter: drop-shadow(0 0 20px rgba(255, 51, 51, 0.8));
 }
 
 .title {
   font-size: 1.75rem;
-  color: #2d3748;
+  color: #00ff00;
   font-weight: 700;
   text-align: center;
   margin-bottom: 1.5rem;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 15px rgba(0, 255, 0, 0.8), 0 0 30px rgba(0, 255, 0, 0.5);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.title::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ff00, transparent);
+  margin: 0.75rem auto 0;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
 }
 
 .resultBox {
-  background: #f7fafc;
+  background: rgba(0, 30, 0, 0.6);
+  border: 1px solid rgba(0, 255, 0, 0.3);
   border-radius: 8px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
+  box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.1);
 }
 
 .resultItem {
@@ -69,25 +129,68 @@
 
 .resultLabel {
   font-weight: 600;
-  color: #4a5568;
+  color: #00dd00;
   font-size: 0.95rem;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+  letter-spacing: 0.5px;
 }
 
 .hash,
 .crackedPassword {
-  background: #2d3748;
-  color: #4fd1c5;
+  background: rgba(0, 0, 0, 0.9);
+  color: #00ff88;
+  border: 1px solid #00ff00;
   padding: 0.75rem 1rem;
   border-radius: 6px;
   font-family: 'Courier New', monospace;
   font-size: 0.9rem;
   word-break: break-all;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3), inset 0 0 10px rgba(0, 255, 0, 0.1);
+  text-shadow: 0 0 5px rgba(0, 255, 136, 0.6);
+  position: relative;
+}
+
+.hash::before,
+.crackedPassword::before {
+  content: '> ';
+  color: #00ff00;
+  font-weight: 700;
 }
 
 .crackedPassword {
-  color: #48bb78;
+  color: #00ff00;
   font-size: 1.25rem;
   font-weight: 700;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.8), 0 0 20px rgba(0, 255, 0, 0.5);
+  animation: crackedGlow 2s ease-in-out infinite;
+}
+
+@keyframes crackedGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3), inset 0 0 10px rgba(0, 255, 0, 0.1);
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.8), 0 0 20px rgba(0, 255, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(0, 255, 0, 0.5), inset 0 0 20px rgba(0, 255, 0, 0.2);
+    text-shadow: 0 0 15px rgba(0, 255, 0, 1), 0 0 30px rgba(0, 255, 0, 0.7), 0 0 45px rgba(0, 255, 0, 0.4);
+  }
+}
+
+.crackedPassword::after {
+  content: '_';
+  display: inline-block;
+  margin-left: 0.25rem;
+  animation: cursorBlink 1s step-end infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
 }
 
 .statsGrid {
@@ -98,12 +201,39 @@
 }
 
 .statBox {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(135deg, rgba(0, 255, 0, 0.2) 0%, rgba(0, 170, 0, 0.3) 100%);
+  border: 2px solid #00ff00;
+  color: #00ff00;
   padding: 1.5rem;
   border-radius: 8px;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.statBox::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 255, 0, 0.1) 0%, transparent 70%);
+  animation: rotate 8s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.statBox:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.6);
+  border-color: #00ff88;
 }
 
 .statNumber {
@@ -111,53 +241,146 @@
   font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+  position: relative;
+  z-index: 1;
 }
 
 .statLabel {
   display: block;
   font-size: 0.9rem;
   opacity: 0.9;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.5px;
 }
 
 .warning {
   display: flex;
   gap: 0.75rem;
   padding: 1rem;
-  background: #fef5e7;
-  border: 2px solid #f39c12;
+  background: rgba(255, 255, 0, 0.1);
+  border: 2px solid #ffff00;
   border-radius: 8px;
+  box-shadow: 0 0 20px rgba(255, 255, 0, 0.3);
 }
 
 .warningIcon {
   font-size: 1.5rem;
+  color: #ffff00;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 0, 0.8));
+  animation: warningBlink 2s ease-in-out infinite;
+}
+
+@keyframes warningBlink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
 }
 
 .warningText {
   margin: 0;
-  color: #7d6608;
+  color: #ffff00;
   line-height: 1.6;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 5px rgba(255, 255, 0, 0.5);
 }
 
 .failureMessage {
-  color: #4a5568;
+  color: #00dd00;
   text-align: center;
   margin-bottom: 1rem;
   font-size: 1.05rem;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
 }
 
 .failureList {
-  background: #f7fafc;
+  background: rgba(0, 30, 0, 0.6);
+  border: 1px solid rgba(0, 255, 0, 0.3);
   padding: 1.5rem;
   border-radius: 8px;
   margin-bottom: 1.5rem;
-  color: #4a5568;
+  color: #00dd00;
   line-height: 1.8;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 3px rgba(0, 255, 0, 0.3);
+  box-shadow: inset 0 0 15px rgba(0, 255, 0, 0.1);
 }
 
 .failureList li {
   margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.5rem;
 }
 
+.failureList li::before {
+  content: '✗';
+  position: absolute;
+  left: 0;
+  color: #ff5555;
+  font-weight: 700;
+  text-shadow: 0 0 5px rgba(255, 51, 51, 0.8);
+}
+
+/* Scan line effect */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ff00, transparent);
+  animation: scanLine 3s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes scanLine {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(300px);
+  }
+}
+
+/* Matrix rain background effect */
+.success::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 0, 0.03) 2px,
+    rgba(0, 255, 0, 0.03) 4px
+  );
+  animation: matrixRain 20s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes matrixRain {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .container {
     padding: 1.5rem;
@@ -169,5 +392,112 @@
 
   .crackedPassword {
     font-size: 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .icon {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .icon {
+    font-size: 2.5rem;
+  }
+
+  .crackedPassword {
+    font-size: 0.9rem;
+  }
+
+  .statNumber {
+    font-size: 1.5rem;
+  }
+
+  .statLabel {
+    font-size: 0.8rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .container,
+  .success,
+  .icon,
+  .crackedPassword,
+  .crackedPassword::after,
+  .statBox::before,
+  .warningIcon,
+  .container::before,
+  .success::after {
+    animation: none !important;
+  }
+
+  .statBox:hover {
+    transform: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .container,
+  .success,
+  .failure,
+  .resultBox,
+  .hash,
+  .crackedPassword,
+  .statBox,
+  .warning,
+  .failureList {
+    border-width: 3px;
+  }
+
+  .title,
+  .resultLabel,
+  .hash,
+  .crackedPassword,
+  .statNumber,
+  .statLabel,
+  .warningText,
+  .failureMessage {
+    text-shadow: none;
+  }
+}
+
+/* Additional decorative elements */
+.successStamp {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 255, 0, 0.2);
+  border: 2px solid #00ff00;
+  border-radius: 20px;
+  color: #00ff00;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Courier New', monospace;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+  animation: stampPulse 2s ease-in-out infinite;
+}
+
+@keyframes stampPulse {
+  0%, 100% {
+    transform: scale(1) rotate(-5deg);
+  }
+  50% {
+    transform: scale(1.05) rotate(-5deg);
   }
 }

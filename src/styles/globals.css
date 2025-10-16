@@ -1,6 +1,6 @@
 /* ==========================================
    Modern CSS Reset & Global Styles
-   Based on Josh Comeau's Modern CSS Reset
+   Black & Green Matrix Theme with Fading
    ========================================== */
 
 /* 1. Use a more-intuitive box-sizing model */
@@ -27,18 +27,19 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   font-size: 16px;
+  background: #000000;
 }
 
-/* 5. Body defaults */
+/* 5. Body defaults - Black & Green Theme */
 body {
   min-height: 100vh;
   line-height: 1.5;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  color: var(--color-text);
-  background-color: var(--color-background);
+  font-family: 'Courier New', 'Consolas', 'Monaco', monospace;
+  color: #00ff00;
+  background: linear-gradient(180deg, #000000 0%, #001a00 50%, #000000 100%);
+  background-attachment: fixed;
   transition: background-color 0.3s ease, color 0.3s ease;
+  text-shadow: 0 0 2px rgba(0, 255, 0, 0.5);
 }
 
 /* 6. Improve media defaults */
@@ -46,19 +47,50 @@ img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
   height: auto;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
 }
 
-/* 7. Inherit fonts for form controls */
+img:hover, picture:hover {
+  opacity: 1;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 0, 0.5));
+}
+
+/* 7. Inherit fonts for form controls - Green Theme */
 input, button, textarea, select {
   font: inherit;
-  color: inherit;
+  color: #00ff00;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid #00ff00;
+  transition: all 0.3s ease;
 }
 
-/* 8. Remove default button styles */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #00ff88;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+  background: rgba(0, 20, 0, 0.9);
+}
+
+/* 8. Remove default button styles - Green Theme */
 button {
-  background: none;
-  border: none;
+  background: rgba(0, 255, 0, 0.1);
+  border: 1px solid #00ff00;
+  color: #00ff00;
   cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: rgba(0, 255, 0, 0.2);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
 }
 
 /* 9. Avoid text overflows */
@@ -72,40 +104,65 @@ p, h1, h2, h3, h4, h5, h6 {
 p {
   text-wrap: pretty;
   max-width: 75ch;
+  color: #00dd00;
+  line-height: 1.7;
 }
 
-/* 11. Headings */
+/* 11. Headings - Glowing Green */
 h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
   line-height: 1.2;
   font-weight: 700;
+  color: #00ff00;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+  letter-spacing: 0.5px;
 }
 
-/* 12. Links */
+h1 {
+  animation: fadeInGlow 1s ease-in;
+}
+
+@keyframes fadeInGlow {
+  from {
+    opacity: 0;
+    text-shadow: 0 0 0 transparent;
+  }
+  to {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+  }
+}
+
+/* 12. Links - Green Glow */
 a {
-  color: var(--color-link);
+  color: #00ff88;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
 }
 
 a:hover {
-  color: var(--color-link-hover);
+  color: #00ffff;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
 }
 
 a:focus-visible {
-  outline: 2px solid var(--color-focus);
+  outline: 2px solid #00ff00;
   outline-offset: 2px;
   border-radius: 2px;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
 }
 
 /* 13. Lists */
 ul, ol {
   list-style-position: inside;
+  color: #00dd00;
 }
 
 /* 14. Root stacking context */
 #root, #__next {
   isolation: isolate;
+  min-height: 100vh;
 }
 
 /* 15. Remove list styles for navigation */
@@ -113,91 +170,142 @@ nav ul, nav ol {
   list-style: none;
 }
 
-/* 16. Code and pre */
+/* 16. Code and pre - Terminal Style */
 code, pre {
   font-family: 'Courier New', 'Consolas', 'Monaco', monospace;
   font-size: 0.9em;
+  color: #00ff00;
+  text-shadow: 0 0 3px rgba(0, 255, 0, 0.5);
 }
 
 pre {
   overflow-x: auto;
   padding: 1rem;
-  background: var(--color-code-bg);
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid #00ff00;
   border-radius: 8px;
+  box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.2);
 }
 
-/* 17. Selection */
+code {
+  background: rgba(0, 255, 0, 0.1);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 255, 0, 0.3);
+}
+
+/* 17. Selection - Green Highlight */
 ::selection {
-  background-color: var(--color-selection-bg);
-  color: var(--color-selection-text);
+  background-color: rgba(0, 255, 0, 0.3);
+  color: #00ff00;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
 }
 
-/* 18. Focus visible */
+::-moz-selection {
+  background-color: rgba(0, 255, 0, 0.3);
+  color: #00ff00;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+}
+
+/* 18. Focus visible - Green Glow */
 :focus-visible {
-  outline: 2px solid var(--color-focus);
+  outline: 2px solid #00ff00;
   outline-offset: 2px;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
 }
 
 /* 19. Disabled elements */
 :disabled {
   cursor: not-allowed;
-  opacity: 0.6;
+  opacity: 0.4;
+  filter: grayscale(0.5);
 }
 
-/* 20. Tables */
+/* 20. Tables - Green Theme */
 table {
   border-collapse: collapse;
   width: 100%;
+  border: 1px solid #00ff00;
+  background: rgba(0, 0, 0, 0.8);
 }
 
 th, td {
   text-align: left;
-  padding: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  color: #00dd00;
 }
 
-/* 21. HR */
+th {
+  background: rgba(0, 255, 0, 0.1);
+  color: #00ff00;
+  font-weight: 700;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+tr:hover {
+  background: rgba(0, 255, 0, 0.05);
+}
+
+/* 21. HR - Green Line */
 hr {
   border: none;
-  border-top: 1px solid var(--color-border);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00ff00, transparent);
   margin: 2rem 0;
+  box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
 }
 
-/* 22. Fieldset */
+/* 22. Fieldset - Green Border */
 fieldset {
-  border: 1px solid var(--color-border);
+  border: 1px solid #00ff00;
   border-radius: 8px;
   padding: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
 }
 
 legend {
   padding: 0 0.5rem;
   font-weight: 600;
+  color: #00ff00;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
 }
 
-/* 23. Scrollbar styling (webkit browsers) */
+/* 23. Scrollbar styling - Black & Green */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-scrollbar-track);
+  background: #000000;
+  border: 1px solid #00ff00;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-scrollbar-thumb);
+  background: linear-gradient(180deg, #00ff00, #00aa00);
   border-radius: 10px;
+  border: 1px solid #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-scrollbar-thumb-hover);
+  background: linear-gradient(180deg, #00ffff, #00ff88);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+}
+
+/* Firefox Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #00ff00 #000000;
 }
 
 /* 24. Print styles */
 @media print {
   * {
-    background: transparent !important;
+    background: white !important;
     color: black !important;
     box-shadow: none !important;
     text-shadow: none !important;
@@ -205,6 +313,7 @@ legend {
 
   a, a:visited {
     text-decoration: underline;
+    color: black !important;
   }
 
   a[href]::after {
@@ -244,7 +353,12 @@ legend {
 /* 26. High contrast mode */
 @media (prefers-contrast: high) {
   * {
-    border-color: currentColor;
+    border-color: #00ff00;
+  }
+  
+  body {
+    background: #000000;
+    color: #00ff00;
   }
 }
 
@@ -269,4 +383,68 @@ legend {
   content: "";
   display: table;
   clear: both;
+}
+
+/* Additional Matrix Effects */
+@keyframes matrixGlow {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(0, 255, 0, 0.8), 0 0 25px rgba(0, 255, 0, 0.5);
+  }
+}
+
+.matrix-glow {
+  animation: matrixGlow 2s ease-in-out infinite;
+}
+
+/* Fade-in animation for page loads */
+@keyframes pageLoadFade {
+  from {
+    opacity: 0;
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+body {
+  animation: pageLoadFade 0.8s ease-in;
+}
+
+/* Placeholder styling */
+::placeholder {
+  color: rgba(0, 255, 0, 0.5);
+  opacity: 1;
+}
+
+::-webkit-input-placeholder {
+  color: rgba(0, 255, 0, 0.5);
+}
+
+::-moz-placeholder {
+  color: rgba(0, 255, 0, 0.5);
+}
+
+:-ms-input-placeholder {
+  color: rgba(0, 255, 0, 0.5);
+}
+
+/* Autofill styling */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #00ff00;
+  -webkit-box-shadow: 0 0 0px 1000px rgba(0, 20, 0, 0.9) inset;
+  box-shadow: 0 0 0px 1000px rgba(0, 20, 0, 0.9) inset;
+  border: 1px solid #00ff00;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Smooth transitions for all interactive elements */
+a, button, input, select, textarea {
+  transition: all 0.3s ease;
 }

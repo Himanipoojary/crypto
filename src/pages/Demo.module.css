@@ -1,26 +1,53 @@
 .container {
   width: 100%;
   min-height: 600px;
+  position: relative;
 }
 
 .header {
   text-align: center;
   margin-bottom: 3rem;
+  animation: fadeInGlow 0.8s ease-in;
+}
+
+@keyframes fadeInGlow {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #2d3748;
+  color: #00ff00;
   margin: 0 0 1rem 0;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.8), 0 0 20px rgba(0, 255, 0, 0.5);
+  animation: textGlow 3s ease-in-out infinite;
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.8), 0 0 20px rgba(0, 255, 0, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(0, 255, 0, 1), 0 0 30px rgba(0, 255, 0, 0.7), 0 0 45px rgba(0, 255, 0, 0.4);
+  }
 }
 
 .subtitle {
   font-size: 1.125rem;
-  color: #718096;
+  color: #00dd00;
   margin: 0;
   max-width: 700px;
   margin: 0 auto;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
 }
 
 .demoGrid {
@@ -41,6 +68,7 @@
   display: flex;
   gap: 1rem;
   justify-content: center;
+  margin-top: 1rem;
 }
 
 .resetButton {
@@ -48,32 +76,53 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
+  background: rgba(0, 255, 0, 0.1);
+  border: 2px solid #00ff00;
+  color: #00ff00;
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
 }
 
 .resetButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+  background: rgba(0, 255, 0, 0.2);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.6), 0 0 30px rgba(0, 255, 0, 0.4);
+  border-color: #00ff88;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+}
+
+.resetButton:active {
+  transform: translateY(0);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
 }
 
 .buttonIcon {
   font-size: 1.2rem;
+  filter: drop-shadow(0 0 5px rgba(0, 255, 0, 0.8));
 }
 
 .infoCard,
 .tipsCard {
-  background: white;
+  background: rgba(0, 20, 0, 0.8);
+  border: 1px solid #00ff00;
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.infoCard:hover,
+.tipsCard:hover {
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+  border-color: #00ff88;
+  transform: translateY(-2px);
 }
 
 .infoTitle,
@@ -83,13 +132,26 @@
   gap: 0.5rem;
   font-size: 1.25rem;
   font-weight: 700;
-  color: #2d3748;
+  color: #00ff00;
   margin: 0 0 1rem 0;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
 }
 
 .infoIcon,
 .tipsIcon {
   font-size: 1.5rem;
+  filter: drop-shadow(0 0 8px rgba(0, 255, 0, 0.8));
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
 }
 
 .infoList,
@@ -104,26 +166,48 @@
 
 .infoList li,
 .tipsList li {
-  color: #4a5568;
+  color: #00dd00;
   padding-left: 1.5rem;
   position: relative;
   line-height: 1.6;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 3px rgba(0, 255, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.infoList li:hover,
+.tipsList li:hover {
+  color: #00ff00;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.6);
+  transform: translateX(5px);
 }
 
 .infoList li::before {
   content: '→';
   position: absolute;
   left: 0;
-  color: #667eea;
+  color: #00ff00;
   font-weight: 700;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+  animation: arrowBlink 2s ease-in-out infinite;
+}
+
+@keyframes arrowBlink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 .tipsList li::before {
   content: '✓';
   position: absolute;
   left: 0;
-  color: #48bb78;
+  color: #00ff00;
   font-weight: 700;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
 }
 
 .loadingOverlay {
@@ -132,33 +216,104 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.95);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1rem;
   z-index: 9999;
-  color: white;
+  color: #00ff00;
   font-size: 1.125rem;
   font-weight: 600;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .loadingSpinner {
   width: 50px;
   height: 50px;
-  border: 5px solid rgba(255, 255, 255, 0.3);
-  border-top-color: white;
+  border: 5px solid rgba(0, 255, 0, 0.2);
+  border-top-color: #00ff00;
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  animation: spinGlow 1s linear infinite;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
 }
 
-@keyframes spin {
+@keyframes spinGlow {
   to {
     transform: rotate(360deg);
   }
 }
 
+.loadingText {
+  animation: textPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes textPulse {
+  0%, 100% {
+    opacity: 0.7;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 20px rgba(0, 255, 0, 1), 0 0 30px rgba(0, 255, 0, 0.6);
+  }
+}
+
+/* Scan line effect on cards */
+.infoCard::after,
+.tipsCard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ff00, transparent);
+  animation: scanLine 3s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes scanLine {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(200px);
+  }
+}
+
+/* Terminal cursor effect */
+.terminalCursor {
+  display: inline-block;
+  width: 10px;
+  height: 1.2em;
+  background: #00ff00;
+  margin-left: 5px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Responsive Design */
 @media (max-width: 1024px) {
   .demoGrid {
     grid-template-columns: 1fr;
@@ -181,5 +336,129 @@
   .infoCard,
   .tipsCard {
     padding: 1.5rem;
+  }
+
+  .actionButtons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .resetButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .infoCard,
+  .tipsCard {
+    padding: 1rem;
+  }
+
+  .infoTitle,
+  .tipsTitle {
+    font-size: 1.1rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .title,
+  .infoIcon,
+  .tipsIcon,
+  .infoList li::before,
+  .loadingSpinner,
+  .loadingText,
+  .terminalCursor {
+    animation: none;
+  }
+
+  .infoCard::after,
+  .tipsCard::after {
+    animation: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .infoCard,
+  .tipsCard {
+    border-width: 2px;
+  }
+
+  .title,
+  .infoTitle,
+  .tipsTitle {
+    text-shadow: none;
+  }
+}
+
+/* Additional Matrix effects */
+.glitchEffect {
+  position: relative;
+}
+
+.glitchEffect::before,
+.glitchEffect::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.glitchEffect::before {
+  color: #ff00ff;
+  animation: glitch1 2s infinite;
+}
+
+.glitchEffect::after {
+  color: #00ffff;
+  animation: glitch2 2s infinite;
+}
+
+@keyframes glitch1 {
+  0%, 100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+}
+
+@keyframes glitch2 {
+  0%, 100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(2px, -2px);
+  }
+  40% {
+    transform: translate(2px, 2px);
+  }
+  60% {
+    transform: translate(-2px, -2px);
+  }
+  80% {
+    transform: translate(-2px, 2px);
   }
 }

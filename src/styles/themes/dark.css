@@ -1,109 +1,328 @@
 /* ==========================================
-   Dark Theme
-   Auto-applies based on system preference
+   Matrix Dark Theme
+   Black & Green aesthetic that reinforces the hacker theme
    ========================================== */
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Colors */
-    --color-text: #e2e8f0;
-    --color-text-secondary: #a0aec0;
-    --color-text-muted: #718096;
+    /* Text Colors - Green Shades */
+    --color-text: #00ff00;
+    --color-text-secondary: #00dd00;
+    --color-text-muted: #00aa00;
     
-    --color-background: #1a202c;
-    --color-background-secondary: #2d3748;
-    --color-background-tertiary: #374151;
+    /* Backgrounds - Pure Black */
+    --color-background: #000000;
+    --color-background-secondary: rgba(0, 20, 0, 0.8);
+    --color-background-tertiary: rgba(0, 30, 0, 0.6);
     
-    --color-border: #4a5568;
-    --color-border-light: #374151;
-    --color-border-dark: #718096;
+    /* Borders - Green with Glow */
+    --color-border: #00ff00;
+    --color-border-light: #00dd00;
+    --color-border-dark: #00aa00;
     
-    --color-link: #7c8ff0;
-    --color-link-hover: #a5b4fc;
+    /* Links - Bright Green */
+    --color-link: #00ff88;
+    --color-link-hover: #00ffff;
     
-    --color-code-bg: #171923;
-    --color-code-text: #cbd5e0;
+    /* Code - Terminal Style */
+    --color-code-bg: rgba(0, 0, 0, 0.95);
+    --color-code-text: #00ff00;
     
-    --color-scrollbar-track: #2d3748;
-    --color-scrollbar-thumb: #4a5568;
-    --color-scrollbar-thumb-hover: #718096;
+    /* Scrollbar - Green on Black */
+    --color-scrollbar-track: #000000;
+    --color-scrollbar-thumb: #00ff00;
+    --color-scrollbar-thumb-hover: #00ff88;
     
-    /* Adjusted colors for dark mode */
-    --color-primary: #7c8ff0;
-    --color-primary-light: #a5b4fc;
-    --color-primary-dark: #667eea;
+    /* Primary Colors - Green Spectrum */
+    --color-primary: #00ff00;
+    --color-primary-light: #00ff88;
+    --color-primary-dark: #00aa00;
     
-    --color-gray-50: #374151;
-    --color-gray-100: #4a5568;
-    --color-gray-200: #718096;
+    /* Gray Scale - Green Tinted */
+    --color-gray-50: #001a00;
+    --color-gray-100: #002200;
+    --color-gray-200: #003300;
+    --color-gray-300: #004400;
+    --color-gray-400: #005500;
+    --color-gray-500: #007700;
+    --color-gray-600: #009900;
+    --color-gray-700: #00aa00;
+    --color-gray-800: #00cc00;
+    --color-gray-900: #00dd00;
     
-    /* Shadows (softer in dark mode) */
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4);
-    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.5);
-    --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.6);
+    /* Shadows - Green Glow Effects */
+    --shadow-sm: 0 0 5px rgba(0, 255, 0, 0.3);
+    --shadow-md: 0 0 10px rgba(0, 255, 0, 0.4);
+    --shadow-lg: 0 0 15px rgba(0, 255, 0, 0.5);
+    --shadow-xl: 0 0 20px rgba(0, 255, 0, 0.6);
+    --shadow-2xl: 0 0 30px rgba(0, 255, 0, 0.7);
+    --shadow-inner: inset 0 0 10px rgba(0, 255, 0, 0.2);
     
-    /* Component adjustments */
-    --card-background: #2d3748;
-    --input-background: #374151;
-    --button-hover-opacity: 1.1;
+    /* Component Adjustments */
+    --card-background: rgba(0, 20, 0, 0.8);
+    --input-background: rgba(0, 10, 0, 0.9);
+    --button-hover-opacity: 1.2;
+    
+    /* Additional Glow Effects */
+    --text-glow: 0 0 5px rgba(0, 255, 0, 0.8);
+    --border-glow: 0 0 10px rgba(0, 255, 0, 0.5);
+    --box-glow: 0 0 15px rgba(0, 255, 0, 0.4);
   }
   
-  /* Image adjustments for dark mode */
+  /* Image adjustments - Green filter overlay */
   img {
     opacity: 0.9;
+    filter: brightness(0.9) contrast(1.1);
+    transition: all 0.3s ease;
   }
   
   img:hover {
     opacity: 1;
+    filter: brightness(1) contrast(1.2) drop-shadow(0 0 10px rgba(0, 255, 0, 0.5));
+  }
+  
+  /* SVG icons - Green tint */
+  svg {
+    filter: drop-shadow(0 0 3px rgba(0, 255, 0, 0.5));
+    transition: filter 0.3s ease;
+  }
+  
+  svg:hover {
+    filter: drop-shadow(0 0 8px rgba(0, 255, 0, 0.8));
   }
 }
 
-/* Manual dark mode toggle (when using data-theme attribute) */
-[data-theme="dark"] {
-  /* Same as media query above */
-  --color-text: #e2e8f0;
-  --color-text-secondary: #a0aec0;
-  --color-text-muted: #718096;
+/* Manual Matrix theme toggle (when using data-theme attribute) */
+[data-theme="dark"],
+[data-theme="matrix"] {
+  /* Text Colors - Green Shades */
+  --color-text: #00ff00;
+  --color-text-secondary: #00dd00;
+  --color-text-muted: #00aa00;
   
-  --color-background: #1a202c;
-  --color-background-secondary: #2d3748;
-  --color-background-tertiary: #374151;
+  /* Backgrounds - Pure Black */
+  --color-background: #000000;
+  --color-background-secondary: rgba(0, 20, 0, 0.8);
+  --color-background-tertiary: rgba(0, 30, 0, 0.6);
   
-  --color-border: #4a5568;
-  --color-border-light: #374151;
-  --color-border-dark: #718096;
+  /* Borders - Green with Glow */
+  --color-border: #00ff00;
+  --color-border-light: #00dd00;
+  --color-border-dark: #00aa00;
   
-  --color-link: #7c8ff0;
-  --color-link-hover: #a5b4fc;
+  /* Links - Bright Green */
+  --color-link: #00ff88;
+  --color-link-hover: #00ffff;
   
-  --color-code-bg: #171923;
-  --color-code-text: #cbd5e0;
+  /* Code - Terminal Style */
+  --color-code-bg: rgba(0, 0, 0, 0.95);
+  --color-code-text: #00ff00;
   
-  --color-scrollbar-track: #2d3748;
-  --color-scrollbar-thumb: #4a5568;
-  --color-scrollbar-thumb-hover: #718096;
+  /* Scrollbar - Green on Black */
+  --color-scrollbar-track: #000000;
+  --color-scrollbar-thumb: #00ff00;
+  --color-scrollbar-thumb-hover: #00ff88;
   
-  --color-primary: #7c8ff0;
-  --color-primary-light: #a5b4fc;
-  --color-primary-dark: #667eea;
+  /* Primary Colors - Green Spectrum */
+  --color-primary: #00ff00;
+  --color-primary-light: #00ff88;
+  --color-primary-dark: #00aa00;
+  --color-primary-gradient: linear-gradient(135deg, #00ff00 0%, #00aa00 100%);
   
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4);
-  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.5);
-  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.6);
+  /* Secondary Colors */
+  --color-secondary: #00ffaa;
+  --color-secondary-light: #00ffcc;
+  --color-secondary-dark: #00dd88;
   
-  --card-background: #2d3748;
-  --input-background: #374151;
-  --button-hover-opacity: 1.1;
+  /* Gray Scale - Green Tinted */
+  --color-gray-50: #001a00;
+  --color-gray-100: #002200;
+  --color-gray-200: #003300;
+  --color-gray-300: #004400;
+  --color-gray-400: #005500;
+  --color-gray-500: #007700;
+  --color-gray-600: #009900;
+  --color-gray-700: #00aa00;
+  --color-gray-800: #00cc00;
+  --color-gray-900: #00dd00;
+  
+  /* Semantic Colors - Consistent with Theme */
+  --color-success: #00ff00;
+  --color-success-light: #00ff88;
+  --color-success-dark: #00dd00;
+  
+  --color-warning: #ffff00;
+  --color-warning-light: #ffff88;
+  --color-warning-dark: #dddd00;
+  
+  --color-error: #ff3333;
+  --color-error-light: #ff5555;
+  --color-error-dark: #dd0000;
+  
+  --color-info: #00ffff;
+  --color-info-light: #88ffff;
+  --color-info-dark: #00dddd;
+  
+  /* Shadows - Green Glow Effects */
+  --shadow-sm: 0 0 5px rgba(0, 255, 0, 0.3);
+  --shadow-md: 0 0 10px rgba(0, 255, 0, 0.4);
+  --shadow-lg: 0 0 15px rgba(0, 255, 0, 0.5);
+  --shadow-xl: 0 0 20px rgba(0, 255, 0, 0.6);
+  --shadow-2xl: 0 0 30px rgba(0, 255, 0, 0.7);
+  --shadow-inner: inset 0 0 10px rgba(0, 255, 0, 0.2);
+  
+  /* Glow Effects */
+  --glow-sm: 0 0 5px #00ff00;
+  --glow-md: 0 0 10px #00ff00, 0 0 20px #00ff00;
+  --glow-lg: 0 0 15px #00ff00, 0 0 30px #00ff00, 0 0 45px #00ff00;
+  --glow-xl: 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00;
+  
+  /* Text Shadows */
+  --text-glow-sm: 0 0 3px rgba(0, 255, 0, 0.8);
+  --text-glow-md: 0 0 5px rgba(0, 255, 0, 0.8), 0 0 10px rgba(0, 255, 0, 0.5);
+  --text-glow-lg: 0 0 10px rgba(0, 255, 0, 0.8), 0 0 20px rgba(0, 255, 0, 0.6), 0 0 30px rgba(0, 255, 0, 0.4);
+  
+  /* Component Adjustments */
+  --card-background: rgba(0, 20, 0, 0.8);
+  --input-background: rgba(0, 10, 0, 0.9);
+  --button-hover-opacity: 1.2;
+  
+  /* Selection */
+  --color-selection-bg: rgba(0, 255, 0, 0.3);
+  --color-selection-text: #00ff00;
+  --color-focus: #00ff00;
+  
+  /* Matrix Specific */
+  --terminal-bg: rgba(0, 0, 0, 0.95);
+  --terminal-text: #00ff00;
+  --terminal-border: #00ff00;
+  --matrix-rain-color: rgba(0, 255, 0, 0.8);
 }
 
-[data-theme="dark"] img {
+/* Image effects for manual theme */
+[data-theme="dark"] img,
+[data-theme="matrix"] img {
   opacity: 0.9;
+  filter: brightness(0.9) contrast(1.1);
+  transition: all 0.3s ease;
 }
 
-[data-theme="dark"] img:hover {
+[data-theme="dark"] img:hover,
+[data-theme="matrix"] img:hover {
   opacity: 1;
+  filter: brightness(1) contrast(1.2) drop-shadow(0 0 10px rgba(0, 255, 0, 0.5));
+}
+
+/* SVG effects for manual theme */
+[data-theme="dark"] svg,
+[data-theme="matrix"] svg {
+  filter: drop-shadow(0 0 3px rgba(0, 255, 0, 0.5));
+  transition: filter 0.3s ease;
+}
+
+[data-theme="dark"] svg:hover,
+[data-theme="matrix"] svg:hover {
+  filter: drop-shadow(0 0 8px rgba(0, 255, 0, 0.8));
+}
+
+/* Enhanced effects for specific elements */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="matrix"] h1,
+[data-theme="matrix"] h2,
+[data-theme="matrix"] h3 {
+  text-shadow: var(--text-glow-md);
+  animation: subtleGlow 3s ease-in-out infinite;
+}
+
+@keyframes subtleGlow {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.8), 0 0 10px rgba(0, 255, 0, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(0, 255, 0, 1), 0 0 20px rgba(0, 255, 0, 0.7), 0 0 30px rgba(0, 255, 0, 0.4);
+  }
+}
+
+/* Card hover effects */
+[data-theme="dark"] .card:hover,
+[data-theme="matrix"] .card:hover {
+  box-shadow: 0 0 25px rgba(0, 255, 0, 0.6);
+  border-color: #00ff88;
+}
+
+/* Button glow on hover */
+[data-theme="dark"] button:hover,
+[data-theme="matrix"] button:hover {
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+}
+
+/* Input focus glow */
+[data-theme="dark"] input:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] select:focus,
+[data-theme="matrix"] input:focus,
+[data-theme="matrix"] textarea:focus,
+[data-theme="matrix"] select:focus {
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
+  border-color: #00ff88;
+}
+
+/* Link glow effect */
+[data-theme="dark"] a:hover,
+[data-theme="matrix"] a:hover {
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+/* Table row hover */
+[data-theme="dark"] tr:hover,
+[data-theme="matrix"] tr:hover {
+  background: rgba(0, 255, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+/* Code block enhancements */
+[data-theme="dark"] pre,
+[data-theme="matrix"] pre {
+  box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.2), 0 0 10px rgba(0, 255, 0, 0.3);
+  border: 1px solid #00ff00;
+}
+
+/* Scrollbar enhancements */
+[data-theme="dark"] ::-webkit-scrollbar-thumb,
+[data-theme="matrix"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00ff00, #00aa00);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track,
+[data-theme="matrix"] ::-webkit-scrollbar-track {
+  background: #000000;
+  border: 1px solid rgba(0, 255, 0, 0.2);
+}
+
+/* Matrix rain effect overlay (optional) */
+[data-theme="dark"]::before,
+[data-theme="matrix"]::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 255, 0, 0.01) 50%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+  animation: matrixScan 5s linear infinite;
+}
+
+@keyframes matrixScan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
 }

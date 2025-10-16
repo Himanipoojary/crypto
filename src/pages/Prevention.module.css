@@ -1,5 +1,15 @@
 .container {
   width: 100%;
+  animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .header {
@@ -10,16 +20,30 @@
 .title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #2d3748;
+  color: #00ff00;
   margin: 0 0 1rem 0;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 15px rgba(0, 255, 0, 0.8), 0 0 30px rgba(0, 255, 0, 0.5);
+  animation: titlePulse 3s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+  0%, 100% {
+    text-shadow: 0 0 15px rgba(0, 255, 0, 0.8), 0 0 30px rgba(0, 255, 0, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(0, 255, 0, 1), 0 0 40px rgba(0, 255, 0, 0.7), 0 0 60px rgba(0, 255, 0, 0.4);
+  }
 }
 
 .subtitle {
   font-size: 1.125rem;
-  color: #718096;
+  color: #00dd00;
   margin: 0;
   max-width: 800px;
   margin: 0 auto;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
 }
 
 .section {
@@ -32,12 +56,25 @@
   gap: 0.75rem;
   font-size: 2rem;
   font-weight: 700;
-  color: #2d3748;
+  color: #00ff00;
   margin: 0 0 2rem 0;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
 }
 
 .titleIcon {
   font-size: 2rem;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 0, 0.8));
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .strategiesGrid {
@@ -47,10 +84,19 @@
 }
 
 .mfaCard {
-  background: white;
+  background: rgba(0, 20, 0, 0.8);
+  border: 2px solid #00ff00;
   border-radius: 16px;
   padding: 3rem;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.4);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.mfaCard:hover {
+  box-shadow: 0 0 40px rgba(0, 255, 0, 0.6);
+  border-color: #00ff88;
+  transform: translateY(-5px);
 }
 
 .mfaHeader {
@@ -63,19 +109,34 @@
   gap: 1rem;
   font-size: 2rem;
   font-weight: 700;
-  color: #2d3748;
+  color: #00ff00;
   margin: 0;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
 }
 
 .mfaIcon {
   font-size: 2.5rem;
+  filter: drop-shadow(0 0 15px rgba(0, 255, 0, 0.8));
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
 }
 
 .mfaDescription {
   font-size: 1.125rem;
-  color: #4a5568;
+  color: #00dd00;
   line-height: 1.7;
   margin-bottom: 2rem;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 3px rgba(0, 255, 0, 0.3);
 }
 
 .mfaTypes {
@@ -87,38 +148,51 @@
 .mfaType {
   text-align: center;
   padding: 2rem;
-  background: #f7fafc;
+  background: rgba(0, 10, 0, 0.6);
+  border: 1px solid #00ff00;
   border-radius: 12px;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.2);
 }
 
 .mfaType:hover {
   transform: translateY(-5px);
+  background: rgba(0, 20, 0, 0.8);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+  border-color: #00ff88;
 }
 
 .mfaTypeIcon {
   font-size: 3rem;
   display: block;
   margin-bottom: 1rem;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 0, 0.6));
 }
 
 .mfaType h3 {
   font-size: 1.25rem;
-  color: #2d3748;
+  color: #00ff00;
   font-weight: 700;
   margin: 0 0 0.5rem 0;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.6);
 }
 
 .mfaType p {
-  color: #718096;
+  color: #00dd00;
   margin: 0;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 3px rgba(0, 255, 0, 0.3);
 }
 
 .checklistCard {
-  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  background: linear-gradient(135deg, rgba(0, 255, 0, 0.1) 0%, rgba(0, 170, 0, 0.2) 100%);
+  border: 2px solid #00ff00;
   border-radius: 16px;
   padding: 3rem;
-  color: white;
+  color: #00ff00;
+  box-shadow: 0 0 40px rgba(0, 255, 0, 0.4);
+  backdrop-filter: blur(10px);
 }
 
 .checklistTitle {
@@ -126,6 +200,8 @@
   font-weight: 700;
   text-align: center;
   margin: 0 0 2.5rem 0;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 15px rgba(0, 255, 0, 0.8), 0 0 30px rgba(0, 255, 0, 0.5);
 }
 
 .checklistGrid {
@@ -135,9 +211,17 @@
 }
 
 .checklistColumn {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 30, 0, 0.5);
+  border: 1px solid rgba(0, 255, 0, 0.3);
   padding: 2rem;
   border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.checklistColumn:hover {
+  background: rgba(0, 40, 0, 0.7);
+  border-color: rgba(0, 255, 0, 0.6);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
 }
 
 .checklistColumnTitle {
@@ -145,7 +229,9 @@
   font-weight: 700;
   margin: 0 0 1.5rem 0;
   padding-bottom: 0.75rem;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 2px solid rgba(0, 255, 0, 0.5);
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
 }
 
 .checklistList {
@@ -160,13 +246,30 @@
 .checklistList li {
   line-height: 1.6;
   opacity: 0.95;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 3px rgba(0, 255, 0, 0.3);
+  transition: all 0.2s ease;
+  padding-left: 0.5rem;
+}
+
+.checklistList li:hover {
+  opacity: 1;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.6);
+  transform: translateX(5px);
 }
 
 .resourcesCard {
-  background: white;
+  background: rgba(0, 20, 0, 0.8);
+  border: 2px solid #00ff00;
   border-radius: 16px;
   padding: 3rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.4);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.resourcesCard:hover {
+  box-shadow: 0 0 40px rgba(0, 255, 0, 0.6);
 }
 
 .resourcesTitle {
@@ -175,12 +278,15 @@
   gap: 1rem;
   font-size: 2rem;
   font-weight: 700;
-  color: #2d3748;
+  color: #00ff00;
   margin: 0 0 2rem 0;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
 }
 
 .resourcesIcon {
   font-size: 2.5rem;
+  filter: drop-shadow(0 0 15px rgba(0, 255, 0, 0.8));
 }
 
 .resourcesGrid {
@@ -194,38 +300,86 @@
   align-items: center;
   gap: 1rem;
   padding: 1.5rem;
-  background: #f7fafc;
+  background: rgba(0, 10, 0, 0.6);
+  border: 1px solid #00ff00;
   border-radius: 12px;
   text-decoration: none;
   transition: all 0.3s ease;
-  border: 2px solid transparent;
+  box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.1);
 }
 
 .resourceLink:hover {
-  background: #edf2f7;
-  border-color: #667eea;
+  background: rgba(0, 20, 0, 0.8);
+  border-color: #00ff88;
   transform: translateX(5px);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
 }
 
 .resourceIcon {
   font-size: 2rem;
-  color: #667eea;
+  color: #00ff00;
   flex-shrink: 0;
+  filter: drop-shadow(0 0 8px rgba(0, 255, 0, 0.6));
 }
 
 .resourceLink h4 {
   font-size: 1.125rem;
   font-weight: 700;
-  color: #2d3748;
+  color: #00ff00;
   margin: 0 0 0.25rem 0;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.6);
 }
 
 .resourceLink p {
   font-size: 0.9rem;
-  color: #718096;
+  color: #00dd00;
   margin: 0;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 3px rgba(0, 255, 0, 0.3);
 }
 
+/* Scan line effect */
+.mfaCard::before,
+.resourcesCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ff00, transparent);
+  animation: scanLine 3s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes scanLine {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(300px);
+  }
+}
+
+/* Terminal cursor effect for titles */
+.title::after {
+  content: '_';
+  display: inline-block;
+  margin-left: 0.25rem;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .title {
     font-size: 2rem;
@@ -246,5 +400,101 @@
   .checklistCard,
   .resourcesCard {
     padding: 2rem;
+  }
+
+  .resourceLink {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.25rem;
+  }
+
+  .mfaCard,
+  .checklistCard,
+  .resourcesCard {
+    padding: 1.5rem;
+  }
+
+  .mfaTitle,
+  .resourcesTitle {
+    font-size: 1.5rem;
+  }
+
+  .checklistTitle {
+    font-size: 1.5rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .title,
+  .titleIcon,
+  .mfaIcon,
+  .title::after {
+    animation: none;
+  }
+
+  .mfaCard::before,
+  .resourcesCard::before {
+    animation: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .mfaCard,
+  .checklistCard,
+  .resourcesCard,
+  .mfaType,
+  .checklistColumn,
+  .resourceLink {
+    border-width: 3px;
+  }
+
+  .title,
+  .sectionTitle,
+  .mfaTitle,
+  .resourcesTitle {
+    text-shadow: none;
+  }
+}
+
+/* Additional Matrix effects */
+.glowPulse {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 255, 0, 0.6);
+  }
+}
+
+/* Loading dots animation */
+.loadingDots::after {
+  content: '.';
+  animation: dots 1.5s steps(3, end) infinite;
+}
+
+@keyframes dots {
+  0%, 20% {
+    content: '.';
+  }
+  40% {
+    content: '..';
+  }
+  60%, 100% {
+    content: '...';
   }
 }

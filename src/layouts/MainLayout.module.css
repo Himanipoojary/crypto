@@ -1,39 +1,63 @@
-/* Main App Container - Full height flex layout */
+/* Main App Container - Black & Green Matrix Theme */
 .appContainer {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: linear-gradient(180deg, #000000 0%, #001a00 50%, #000000 100%);
+  background-attachment: fixed;
   position: relative;
+  overflow-x: hidden;
 }
 
-/* Main Content Area - Flexible to fill available space */
+/* Animated background effect */
+.appContainer::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 255, 0, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Main Content Area - Flexible with fade-in */
 .mainContent {
   flex: 1;
   width: 100%;
   padding: 2rem 0;
-  animation: fadeIn 0.5s ease-in;
+  animation: fadeInMatrix 0.8s ease-in;
   position: relative;
+  z-index: 1;
 }
 
-/* Fade in animation for page transitions */
-@keyframes fadeIn {
+/* Fade in animation with Matrix glow effect */
+@keyframes fadeInMatrix {
   from {
     opacity: 0;
     transform: translateY(20px);
+    filter: blur(5px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
   }
 }
 
-/* Content Wrapper - Centers and constrains content width */
+/* Content Wrapper - Centers content with green glow border */
 .contentWrapper {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
   width: 100%;
+  position: relative;
 }
 
 /* Tablet Devices (1024px and below) */
@@ -71,7 +95,7 @@
   }
 }
 
-/* Loading State - Center spinner or loading indicator */
+/* Loading State - Green spinner */
 .mainContent.loading {
   display: flex;
   justify-content: center;
@@ -82,19 +106,34 @@
 .loadingSpinner {
   width: 50px;
   height: 50px;
-  border: 5px solid #e2e8f0;
-  border-top-color: #667eea;
+  border: 5px solid rgba(0, 255, 0, 0.2);
+  border-top-color: #00ff00;
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  animation: spinGlow 1s linear infinite;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
 }
 
-@keyframes spin {
+@keyframes spinGlow {
   to {
     transform: rotate(360deg);
   }
 }
 
-/* Error State - Center error message */
+/* Loading text */
+.loadingText {
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  margin-top: 1rem;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+  animation: textPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes textPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* Error State - Matrix style error box */
 .mainContent.error {
   display: flex;
   justify-content: center;
@@ -103,36 +142,65 @@
 }
 
 .errorContainer {
-  background: white;
+  background: rgba(0, 0, 0, 0.95);
+  border: 2px solid #ff3333;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 30px rgba(255, 51, 51, 0.5);
   text-align: center;
   max-width: 500px;
+  animation: errorShake 0.5s ease-in-out;
+}
+
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
 }
 
 .errorIcon {
   font-size: 3rem;
   margin-bottom: 1rem;
-  color: #f56565;
+  color: #ff3333;
+  text-shadow: 0 0 20px rgba(255, 51, 51, 0.8);
+  animation: errorPulse 2s ease-in-out infinite;
+}
+
+@keyframes errorPulse {
+  0%, 100% { 
+    transform: scale(1);
+    text-shadow: 0 0 20px rgba(255, 51, 51, 0.8);
+  }
+  50% { 
+    transform: scale(1.1);
+    text-shadow: 0 0 30px rgba(255, 51, 51, 1);
+  }
 }
 
 .errorTitle {
   font-size: 1.5rem;
-  color: #2d3748;
+  color: #ff3333;
   font-weight: 700;
   margin-bottom: 0.5rem;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 10px rgba(255, 51, 51, 0.6);
 }
 
 .errorMessage {
-  color: #718096;
+  color: #00ff00;
   line-height: 1.6;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
 }
 
-/* Print Styles - Remove backgrounds and optimize for printing */
+/* Print Styles */
 @media print {
   .appContainer {
     background: white;
+  }
+
+  .appContainer::before {
+    display: none;
   }
 
   .mainContent {
@@ -144,104 +212,135 @@
     padding: 0;
   }
 
-  /* Hide non-essential elements when printing */
   .mainContent.loading,
   .mainContent.error {
     display: none;
   }
 }
 
-/* Accessibility - Reduced Motion for users with motion sensitivity */
+/* Accessibility - Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   .mainContent {
     animation: none;
   }
 
   .loadingSpinner {
-    animation: none;
-    border-top-color: #667eea;
+    animation: spinGlow 1s linear infinite;
+    border-top-color: #00ff00;
   }
-}
 
-/* Dark Mode Support - Optional but recommended */
-@media (prefers-color-scheme: dark) {
-  .appContainer {
-    background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  .appContainer::before {
+    animation: none;
   }
 
   .errorContainer {
-    background: #2d3748;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    animation: none;
+  }
+
+  .errorIcon {
+    animation: none;
+  }
+}
+
+/* Dark Mode Support - Matrix Theme */
+@media (prefers-color-scheme: dark) {
+  .appContainer {
+    background: linear-gradient(180deg, #000000 0%, #001a00 50%, #000000 100%);
+  }
+
+  .errorContainer {
+    background: rgba(0, 0, 0, 0.95);
+    border-color: #ff3333;
+    box-shadow: 0 0 30px rgba(255, 51, 51, 0.5);
   }
 
   .errorTitle {
-    color: #e2e8f0;
+    color: #ff3333;
+    text-shadow: 0 0 10px rgba(255, 51, 51, 0.6);
   }
 
   .errorMessage {
-    color: #a0aec0;
+    color: #00ff00;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
   }
 }
 
-/* High Contrast Mode for better accessibility */
+/* High Contrast Mode */
 @media (prefers-contrast: high) {
   .appContainer {
-    background: white;
+    background: #000000;
   }
 
   .contentWrapper {
-    border: 2px solid black;
+    border: 2px solid #00ff00;
+  }
+
+  .errorContainer {
+    border: 3px solid #ff3333;
   }
 }
 
-/* Scrollbar Styling (Webkit browsers) */
+/* Scrollbar Styling - Matrix Green */
 .mainContent::-webkit-scrollbar {
-  width: 10px;
+  width: 12px;
 }
 
 .mainContent::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #000000;
+  border: 1px solid rgba(0, 255, 0, 0.2);
   border-radius: 10px;
 }
 
 .mainContent::-webkit-scrollbar-thumb {
-  background: #667eea;
+  background: linear-gradient(180deg, #00ff00, #00aa00);
   border-radius: 10px;
+  border: 1px solid #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
 }
 
 .mainContent::-webkit-scrollbar-thumb:hover {
-  background: #5568d3;
+  background: linear-gradient(180deg, #00ffff, #00ff88);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
 }
 
-/* Focus visible styles for keyboard navigation */
+/* Focus visible styles - Green glow */
 .contentWrapper:focus-visible {
-  outline: 3px solid #667eea;
+  outline: 3px solid #00ff00;
   outline-offset: 2px;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
 }
 
-/* Skip to main content link (accessibility) */
+/* Skip to main content link - Matrix style */
 .skipToContent {
   position: absolute;
   top: -40px;
   left: 0;
-  background: #667eea;
-  color: white;
+  background: rgba(0, 0, 0, 0.95);
+  border: 2px solid #00ff00;
+  color: #00ff00;
   padding: 0.5rem 1rem;
   text-decoration: none;
   border-radius: 0 0 4px 0;
   z-index: 9999;
   transition: top 0.3s ease;
+  font-family: 'Courier New', monospace;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
 }
 
 .skipToContent:focus {
   top: 0;
+  box-shadow: 0 0 25px rgba(0, 255, 0, 0.8);
 }
 
-/* Container for breadcrumb navigation (optional) */
+/* Breadcrumb container - Matrix style */
 .breadcrumbContainer {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem 2rem 0;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 3px rgba(0, 255, 0, 0.5);
 }
 
 @media (max-width: 768px) {
@@ -275,5 +374,81 @@
   .gridLayout {
     grid-template-columns: 1fr;
     gap: 1rem;
+  }
+}
+
+/* Matrix rain effect lines (optional decorative element) */
+.matrixRain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.matrixRain::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #00ff00, transparent);
+  opacity: 0.1;
+  animation: rainDrop 3s linear infinite;
+}
+
+@keyframes rainDrop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+/* Glowing border effect for sections */
+.glowBorder {
+  border: 1px solid #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5), inset 0 0 10px rgba(0, 255, 0, 0.2);
+  border-radius: 8px;
+}
+
+/* Terminal-style container */
+.terminalContainer {
+  background: rgba(0, 0, 0, 0.95);
+  border: 1px solid #00ff00;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+  font-family: 'Courier New', monospace;
+  color: #00ff00;
+}
+
+/* Scan line effect */
+.scanLine {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanLine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(0, 255, 0, 0.5);
+  animation: scan 3s linear infinite;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
   }
 }

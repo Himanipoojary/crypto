@@ -1,91 +1,90 @@
 /* ==========================================
    CSS Custom Properties (Variables)
-   Global design tokens for the application
+   Black & Green Matrix Theme
    ========================================== */
 
 :root {
   /* ==========================================
-     Color Palette - Light Mode (Default)
+     Color Palette - Matrix Theme (Default)
      ========================================== */
   
-  /* Primary Colors */
-  --color-primary: #667eea;
-  --color-primary-light: #7c8ff0;
-  --color-primary-dark: #5568d3;
-  --color-primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  /* Primary Colors - Green */
+  --color-primary: #00ff00;
+  --color-primary-light: #00ff88;
+  --color-primary-dark: #00aa00;
+  --color-primary-gradient: linear-gradient(135deg, #00ff00 0%, #00aa00 100%);
   
-  /* Secondary Colors */
-  --color-secondary: #764ba2;
-  --color-secondary-light: #8b5fb8;
-  --color-secondary-dark: #61398c;
+  /* Secondary Colors - Cyan Green */
+  --color-secondary: #00ffaa;
+  --color-secondary-light: #00ffcc;
+  --color-secondary-dark: #00dd88;
   
-  /* Neutral Colors */
-  --color-white: #ffffff;
+  /* Neutral Colors - Black & Green Shades */
+  --color-white: #00ff00;
   --color-black: #000000;
-  --color-gray-50: #f7fafc;
-  --color-gray-100: #edf2f7;
-  --color-gray-200: #e2e8f0;
-  --color-gray-300: #cbd5e0;
-  --color-gray-400: #a0aec0;
-  --color-gray-500: #718096;
-  --color-gray-600: #4a5568;
-  --color-gray-700: #2d3748;
-  --color-gray-800: #1a202c;
-  --color-gray-900: #171923;
+  --color-gray-50: #001a00;
+  --color-gray-100: #002200;
+  --color-gray-200: #003300;
+  --color-gray-300: #004400;
+  --color-gray-400: #005500;
+  --color-gray-500: #007700;
+  --color-gray-600: #009900;
+  --color-gray-700: #00aa00;
+  --color-gray-800: #00cc00;
+  --color-gray-900: #00dd00;
   
   /* Semantic Colors */
-  --color-success: #48bb78;
-  --color-success-light: #68d391;
-  --color-success-dark: #38a169;
+  --color-success: #00ff00;
+  --color-success-light: #00ff88;
+  --color-success-dark: #00dd00;
   
-  --color-warning: #f6ad55;
-  --color-warning-light: #fbd38d;
-  --color-warning-dark: #ed8936;
+  --color-warning: #ffff00;
+  --color-warning-light: #ffff88;
+  --color-warning-dark: #dddd00;
   
-  --color-error: #f56565;
-  --color-error-light: #fc8181;
-  --color-error-dark: #e53e3e;
+  --color-error: #ff3333;
+  --color-error-light: #ff5555;
+  --color-error-dark: #dd0000;
   
-  --color-info: #4299e1;
-  --color-info-light: #63b3ed;
-  --color-info-dark: #3182ce;
+  --color-info: #00ffff;
+  --color-info-light: #88ffff;
+  --color-info-dark: #00dddd;
   
   /* Application Colors */
-  --color-text: #2d3748;
-  --color-text-secondary: #718096;
-  --color-text-muted: #a0aec0;
+  --color-text: #00ff00;
+  --color-text-secondary: #00dd00;
+  --color-text-muted: #00aa00;
   
-  --color-background: #f5f7fa;
-  --color-background-secondary: #ffffff;
-  --color-background-tertiary: #f7fafc;
+  --color-background: #000000;
+  --color-background-secondary: rgba(0, 20, 0, 0.8);
+  --color-background-tertiary: rgba(0, 30, 0, 0.6);
   
-  --color-border: #e2e8f0;
-  --color-border-light: #edf2f7;
-  --color-border-dark: #cbd5e0;
+  --color-border: #00ff00;
+  --color-border-light: #00dd00;
+  --color-border-dark: #00aa00;
   
-  --color-link: #667eea;
-  --color-link-hover: #5568d3;
+  --color-link: #00ff88;
+  --color-link-hover: #00ffff;
   
-  --color-focus: #667eea;
-  --color-selection-bg: #667eea;
-  --color-selection-text: #ffffff;
+  --color-focus: #00ff00;
+  --color-selection-bg: rgba(0, 255, 0, 0.3);
+  --color-selection-text: #00ff00;
   
-  --color-code-bg: #2d3748;
-  --color-code-text: #a0aec0;
+  --color-code-bg: rgba(0, 0, 0, 0.9);
+  --color-code-text: #00ff00;
   
   /* Scrollbar Colors */
-  --color-scrollbar-track: #f1f1f1;
-  --color-scrollbar-thumb: #667eea;
-  --color-scrollbar-thumb-hover: #5568d3;
+  --color-scrollbar-track: #000000;
+  --color-scrollbar-thumb: #00ff00;
+  --color-scrollbar-thumb-hover: #00ff88;
   
   /* ==========================================
-     Typography
+     Typography - Monospace for Terminal Look
      ========================================== */
   
   /* Font Families */
-  --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  --font-family-heading: var(--font-family-base);
+  --font-family-base: 'Courier New', 'Consolas', 'Monaco', monospace;
+  --font-family-heading: 'Courier New', 'Consolas', 'Monaco', monospace;
   --font-family-mono: 'Courier New', 'Consolas', 'Monaco', monospace;
   
   /* Font Sizes */
@@ -139,15 +138,26 @@
   --radius-full: 9999px;
   
   /* ==========================================
-     Shadows
+     Shadows - Green Glow Effects
      ========================================== */
   
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
-  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.15);
-  --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-sm: 0 0 5px rgba(0, 255, 0, 0.3);
+  --shadow-md: 0 0 10px rgba(0, 255, 0, 0.4);
+  --shadow-lg: 0 0 15px rgba(0, 255, 0, 0.5);
+  --shadow-xl: 0 0 20px rgba(0, 255, 0, 0.6);
+  --shadow-2xl: 0 0 30px rgba(0, 255, 0, 0.7);
+  --shadow-inner: inset 0 0 10px rgba(0, 255, 0, 0.2);
+  
+  /* Glow Effects */
+  --glow-sm: 0 0 5px #00ff00;
+  --glow-md: 0 0 10px #00ff00, 0 0 20px #00ff00;
+  --glow-lg: 0 0 15px #00ff00, 0 0 30px #00ff00, 0 0 45px #00ff00;
+  --glow-xl: 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00;
+  
+  /* Text Shadows - Green Glow */
+  --text-glow-sm: 0 0 3px rgba(0, 255, 0, 0.8);
+  --text-glow-md: 0 0 5px rgba(0, 255, 0, 0.8), 0 0 10px rgba(0, 255, 0, 0.5);
+  --text-glow-lg: 0 0 10px rgba(0, 255, 0, 0.8), 0 0 20px rgba(0, 255, 0, 0.6), 0 0 30px rgba(0, 255, 0, 0.4);
   
   /* ==========================================
      Z-Index Scale
@@ -162,12 +172,22 @@
   --z-index-tooltip: 1070;
   
   /* ==========================================
-     Transitions
+     Transitions - Smoother for Fading Effects
      ========================================== */
   
-  --transition-fast: 150ms ease-in-out;
-  --transition-base: 300ms ease-in-out;
-  --transition-slow: 500ms ease-in-out;
+  --transition-fast: 200ms ease-in-out;
+  --transition-base: 400ms ease-in-out;
+  --transition-slow: 600ms ease-in-out;
+  --transition-glow: 800ms ease-in-out;
+  
+  /* ==========================================
+     Animation Durations
+     ========================================== */
+  
+  --animation-fade-in: 0.6s;
+  --animation-fade-out: 0.4s;
+  --animation-slide-in: 0.5s;
+  --animation-glow-pulse: 2s;
   
   /* ==========================================
      Breakpoints (for reference in JS)
@@ -188,6 +208,42 @@
   
   --header-height: 70px;
   --footer-height: 200px;
+  
+  /* ==========================================
+     Matrix Theme Specific
+     ========================================== */
+  
+  /* Background Gradients */
+  --bg-gradient-primary: linear-gradient(180deg, #000000 0%, #001a00 50%, #000000 100%);
+  --bg-gradient-secondary: linear-gradient(135deg, #000000 0%, #002200 100%);
+  --bg-gradient-card: linear-gradient(135deg, rgba(0, 20, 0, 0.8) 0%, rgba(0, 30, 0, 0.6) 100%);
+  
+  /* Border Styles */
+  --border-glow: 1px solid #00ff00;
+  --border-glow-bright: 2px solid #00ff00;
+  --border-gradient: linear-gradient(135deg, #00ff00, #00ffaa);
+  
+  /* Overlay Colors */
+  --overlay-dark: rgba(0, 0, 0, 0.9);
+  --overlay-green: rgba(0, 255, 0, 0.1);
+  --overlay-green-dark: rgba(0, 100, 0, 0.3);
+  
+  /* Terminal Colors */
+  --terminal-bg: rgba(0, 0, 0, 0.95);
+  --terminal-text: #00ff00;
+  --terminal-border: #00ff00;
+  --terminal-glow: 0 0 10px #00ff00;
+  
+  /* Matrix Rain Effect */
+  --matrix-rain-color: rgba(0, 255, 0, 0.8);
+  --matrix-rain-trail: rgba(0, 255, 0, 0.3);
+  
+  /* Opacity Levels */
+  --opacity-subtle: 0.1;
+  --opacity-light: 0.3;
+  --opacity-medium: 0.5;
+  --opacity-strong: 0.7;
+  --opacity-intense: 0.9;
 }
 
 /* ==========================================
@@ -202,5 +258,40 @@
     --font-size-6xl: 3rem;      /* 48px */
     
     --container-padding: 1rem;
+    
+    /* Adjust glow effects for mobile */
+    --glow-lg: 0 0 10px #00ff00, 0 0 20px #00ff00;
+    --glow-xl: 0 0 15px #00ff00, 0 0 30px #00ff00;
+  }
+}
+
+/* ==========================================
+   Utility Variable Classes
+   ========================================== */
+
+/* For dynamic theme switching if needed */
+[data-theme="matrix"] {
+  --color-primary: #00ff00;
+  --color-background: #000000;
+  --color-text: #00ff00;
+}
+
+/* High contrast mode adjustments */
+@media (prefers-contrast: high) {
+  :root {
+    --color-primary: #00ff00;
+    --color-background: #000000;
+    --color-border: #00ff00;
+    --text-glow-md: 0 0 10px #00ff00, 0 0 20px #00ff00;
+  }
+}
+
+/* Reduced motion - disable glow animations */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --animation-fade-in: 0.01s;
+    --animation-fade-out: 0.01s;
+    --animation-glow-pulse: 0s;
+    --transition-glow: 0s;
   }
 }

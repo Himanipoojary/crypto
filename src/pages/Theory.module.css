@@ -1,5 +1,17 @@
 .container {
   width: 100%;
+  animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .header {
@@ -10,16 +22,30 @@
 .title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #2d3748;
+  color: #00ff00;
   margin: 0 0 1rem 0;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 15px rgba(0, 255, 0, 0.8), 0 0 30px rgba(0, 255, 0, 0.5);
+  animation: titleGlow 3s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+  0%, 100% {
+    text-shadow: 0 0 15px rgba(0, 255, 0, 0.8), 0 0 30px rgba(0, 255, 0, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(0, 255, 0, 1), 0 0 40px rgba(0, 255, 0, 0.7), 0 0 60px rgba(0, 255, 0, 0.4);
+  }
 }
 
 .subtitle {
   font-size: 1.125rem;
-  color: #718096;
+  color: #00dd00;
   margin: 0;
   max-width: 800px;
   margin: 0 auto;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
 }
 
 .section {
@@ -32,47 +58,76 @@
   gap: 0.75rem;
   font-size: 2rem;
   font-weight: 700;
-  color: #2d3748;
+  color: #00ff00;
   margin: 0 0 1.5rem 0;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
 }
 
 .titleIcon {
   font-size: 2rem;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 0, 0.8));
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
 }
 
 .sectionDescription {
   font-size: 1.125rem;
-  color: #718096;
+  color: #00dd00;
   margin: 0 0 2rem 0;
   text-align: center;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.4);
 }
 
 .introCard {
-  background: white;
+  background: rgba(0, 20, 0, 0.8);
+  border: 2px solid #00ff00;
   border-radius: 12px;
   padding: 2.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.4);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.introCard:hover {
+  box-shadow: 0 0 40px rgba(0, 255, 0, 0.6);
+  border-color: #00ff88;
 }
 
 .introText {
   font-size: 1.125rem;
-  color: #4a5568;
+  color: #00dd00;
   line-height: 1.8;
   margin-bottom: 2rem;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 3px rgba(0, 255, 0, 0.3);
 }
 
 .keyPoints {
-  background: #f7fafc;
+  background: rgba(0, 30, 0, 0.6);
   padding: 2rem;
   border-radius: 8px;
-  border-left: 4px solid #667eea;
+  border-left: 4px solid #00ff00;
+  box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.1);
 }
 
 .subTitle {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #2d3748;
+  color: #00ff00;
   margin: 0 0 1rem 0;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
 }
 
 .pointsList {
@@ -85,19 +140,39 @@
 }
 
 .pointsList li {
-  color: #4a5568;
+  color: #00dd00;
   padding-left: 2rem;
   position: relative;
   line-height: 1.6;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 3px rgba(0, 255, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.pointsList li:hover {
+  color: #00ff00;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.6);
+  transform: translateX(5px);
 }
 
 .pointsList li::before {
   content: '✓';
   position: absolute;
   left: 0;
-  color: #48bb78;
+  color: #00ff00;
   font-weight: 700;
   font-size: 1.25rem;
+  text-shadow: 0 0 8px rgba(0, 255, 0, 0.8);
+  animation: checkPulse 2s ease-in-out infinite;
+}
+
+@keyframes checkPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
 
 .stepsGrid {
@@ -107,17 +182,21 @@
 }
 
 .stepCard {
-  background: white;
+  background: rgba(0, 20, 0, 0.8);
+  border: 1px solid #00ff00;
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
   text-align: center;
   position: relative;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
 .stepCard:hover {
   transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.6);
+  border-color: #00ff88;
 }
 
 .stepNumber {
@@ -127,33 +206,61 @@
   transform: translateX(-50%);
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: rgba(0, 255, 0, 0.2);
+  border: 2px solid #00ff00;
+  color: #00ff00;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
   font-size: 1.25rem;
-  box-shadow: 0 4px 6px rgba(102, 126, 234, 0.4);
+  font-family: 'Courier New', monospace;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+  animation: numberGlow 2s ease-in-out infinite;
+}
+
+@keyframes numberGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.9);
+  }
 }
 
 .stepIcon {
   font-size: 3rem;
   margin: 1rem 0;
+  filter: drop-shadow(0 0 15px rgba(0, 255, 0, 0.8));
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
 }
 
 .stepTitle {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #2d3748;
+  color: #00ff00;
   margin: 0 0 0.75rem 0;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
 }
 
 .stepDescription {
-  color: #718096;
+  color: #00dd00;
   line-height: 1.6;
   margin: 0;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 3px rgba(0, 255, 0, 0.3);
 }
 
 .algorithmsGrid {
@@ -169,72 +276,115 @@
 }
 
 .caseCard {
-  background: white;
+  background: rgba(0, 20, 0, 0.8);
+  border: 1px solid #00ff00;
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-top: 4px solid #f56565;
-  transition: transform 0.3s ease;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+  border-top: 4px solid #ff3333;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
 .caseCard:hover {
   transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+  border-top-color: #ff5555;
 }
 
 .caseYear {
   display: inline-block;
-  background: #667eea;
-  color: white;
+  background: rgba(0, 255, 0, 0.2);
+  border: 1px solid #00ff00;
+  color: #00ff00;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-weight: 700;
   font-size: 0.875rem;
   margin-bottom: 1rem;
+  font-family: 'Courier New', monospace;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.4);
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.6);
 }
 
 .caseTitle {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #2d3748;
+  color: #00ff00;
   margin: 0 0 1rem 0;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
 }
 
 .caseDescription {
-  color: #4a5568;
+  color: #00dd00;
   line-height: 1.6;
   margin-bottom: 1rem;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 3px rgba(0, 255, 0, 0.3);
 }
 
 .caseImpact {
-  background: #fff5f5;
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid #ff3333;
   padding: 1rem;
   border-radius: 8px;
-  color: #c53030;
+  color: #ff5555;
   margin-bottom: 1rem;
   line-height: 1.6;
+  font-family: 'Courier New', monospace;
+  box-shadow: 0 0 10px rgba(255, 51, 51, 0.3);
+  text-shadow: 0 0 3px rgba(255, 51, 51, 0.5);
 }
 
 .caseLesson {
-  background: #f0fff4;
+  background: rgba(0, 255, 0, 0.1);
+  border: 1px solid #00ff00;
   padding: 1rem;
   border-radius: 8px;
-  color: #22543d;
+  color: #00ff00;
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
   line-height: 1.6;
+  font-family: 'Courier New', monospace;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+  text-shadow: 0 0 3px rgba(0, 255, 0, 0.5);
 }
 
 .lessonIcon {
   font-size: 1.25rem;
   flex-shrink: 0;
+  filter: drop-shadow(0 0 5px rgba(0, 255, 0, 0.8));
 }
 
 .summaryCard {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, rgba(0, 255, 0, 0.15) 0%, rgba(0, 170, 0, 0.25) 100%);
+  border: 2px solid #00ff00;
   border-radius: 16px;
   padding: 3rem;
-  color: white;
+  color: #00ff00;
+  box-shadow: 0 0 40px rgba(0, 255, 0, 0.5);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.summaryCard::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 255, 0, 0.1) 0%, transparent 70%);
+  animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .summaryTitle {
@@ -242,29 +392,50 @@
   font-weight: 700;
   text-align: center;
   margin: 0 0 2rem 0;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 15px rgba(0, 255, 0, 0.8), 0 0 30px rgba(0, 255, 0, 0.5);
+  position: relative;
+  z-index: 1;
 }
 
 .summaryGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .summaryItem {
   display: flex;
   gap: 1rem;
   align-items: flex-start;
+  background: rgba(0, 30, 0, 0.5);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.summaryItem:hover {
+  background: rgba(0, 40, 0, 0.7);
+  border-color: rgba(0, 255, 0, 0.6);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+  transform: translateY(-3px);
 }
 
 .summaryIcon {
   font-size: 2rem;
   flex-shrink: 0;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 0, 0.8));
 }
 
 .summaryItem h4 {
   font-size: 1.125rem;
   font-weight: 700;
   margin: 0 0 0.5rem 0;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
 }
 
 .summaryItem p {
@@ -272,8 +443,51 @@
   margin: 0;
   opacity: 0.95;
   line-height: 1.6;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 3px rgba(0, 255, 0, 0.3);
 }
 
+/* Scan line effect on cards */
+.stepCard::after,
+.caseCard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ff00, transparent);
+  animation: scanLine 3s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes scanLine {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(250px);
+  }
+}
+
+/* Terminal cursor for section titles */
+.sectionTitle::after {
+  content: '_';
+  display: inline-block;
+  margin-left: 0.25rem;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .title {
     font-size: 2rem;
@@ -293,5 +507,65 @@
   .introCard,
   .summaryCard {
     padding: 2rem;
+  }
+
+  .stepCard,
+  .caseCard {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.25rem;
+  }
+
+  .introCard,
+  .summaryCard {
+    padding: 1.5rem;
+  }
+
+  .summaryTitle {
+    font-size: 1.5rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .title,
+  .titleIcon,
+  .stepNumber,
+  .stepIcon,
+  .pointsList li::before,
+  .summaryCard::before,
+  .sectionTitle::after {
+    animation: none;
+  }
+
+  .stepCard::after,
+  .caseCard::after {
+    animation: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .introCard,
+  .stepCard,
+  .caseCard,
+  .summaryCard,
+  .keyPoints {
+    border-width: 3px;
+  }
+
+  .title,
+  .sectionTitle,
+  .stepTitle,
+  .caseTitle {
+    text-shadow: none;
   }
 }

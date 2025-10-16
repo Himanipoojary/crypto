@@ -1,9 +1,46 @@
 .container {
-  background: white;
+  background: rgba(0, 20, 0, 0.8);
+  border: 2px solid #00ff00;
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.4);
   margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  position: relative;
+  font-family: 'Courier New', monospace;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ff00, transparent);
+  animation: scanLine 3s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes scanLine {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(200px);
+  }
 }
 
 .header {
@@ -11,38 +48,69 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 255, 0, 0.3);
 }
 
 .title {
   font-size: 1.5rem;
-  color: #2d3748;
+  color: #00ff00;
   font-weight: 600;
   margin: 0;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+  letter-spacing: 1px;
 }
 
 .percentage {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #667eea;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 15px rgba(0, 255, 0, 0.8), 0 0 30px rgba(0, 255, 0, 0.5);
+  animation: percentagePulse 2s ease-in-out infinite;
+}
+
+@keyframes percentagePulse {
+  0%, 100% {
+    text-shadow: 0 0 15px rgba(0, 255, 0, 0.8), 0 0 30px rgba(0, 255, 0, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(0, 255, 0, 1), 0 0 40px rgba(0, 255, 0, 0.7), 0 0 60px rgba(0, 255, 0, 0.4);
+  }
 }
 
 .progressBarContainer {
   width: 100%;
   height: 40px;
-  background: #edf2f7;
+  background: rgba(0, 10, 0, 0.8);
+  border: 1px solid #00ff00;
   border-radius: 20px;
   overflow: hidden;
   position: relative;
   margin-bottom: 1.5rem;
+  box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.2);
 }
 
 .progressBar {
   height: 100%;
-  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(90deg, #00ff00 0%, #00aa00 50%, #00ff00 100%);
+  background-size: 200% 100%;
   border-radius: 20px;
   transition: width 0.3s ease;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+  animation: progressGradient 2s linear infinite;
+}
+
+@keyframes progressGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
 }
 
 .progressGlow {
@@ -54,10 +122,10 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.4),
     transparent
   );
-  animation: shimmer 2s infinite;
+  animation: shimmer 1.5s infinite;
 }
 
 @keyframes shimmer {
@@ -67,6 +135,22 @@
   100% {
     transform: translateX(100%);
   }
+}
+
+.progressBar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  border-radius: 20px;
 }
 
 .stats {
@@ -80,34 +164,68 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem;
-  background: #f7fafc;
+  background: rgba(0, 30, 0, 0.6);
+  border: 1px solid rgba(0, 255, 0, 0.3);
   border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.1);
+}
+
+.statItem:hover {
+  background: rgba(0, 40, 0, 0.8);
+  border-color: rgba(0, 255, 0, 0.6);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3), inset 0 0 15px rgba(0, 255, 0, 0.15);
+  transform: translateX(5px);
 }
 
 .statLabel {
   font-weight: 600;
-  color: #4a5568;
+  color: #00dd00;
   font-size: 0.95rem;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
 }
 
 .statValue {
   font-size: 1rem;
-  color: #2d3748;
+  color: #00ff00;
   font-weight: 500;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
 }
 
 .password {
-  background: #2d3748;
-  color: #48bb78;
+  background: rgba(0, 0, 0, 0.9);
+  color: #00ff00;
+  border: 1px solid #00ff00;
   padding: 0.25rem 0.75rem;
   border-radius: 4px;
   font-family: 'Courier New', monospace;
   font-size: 0.9rem;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.4), inset 0 0 5px rgba(0, 255, 0, 0.2);
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+  animation: passwordBlink 1.5s ease-in-out infinite;
+}
+
+@keyframes passwordBlink {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.4), inset 0 0 5px rgba(0, 255, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.6), inset 0 0 10px rgba(0, 255, 0, 0.3);
+  }
+}
+
+.password::before {
+  content: '> ';
+  color: #00ff00;
 }
 
 .idle {
-  color: #a0aec0;
+  color: #00aa00;
   font-style: italic;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 3px rgba(0, 255, 0, 0.3);
 }
 
 .statusIndicator {
@@ -116,30 +234,107 @@
   gap: 0.75rem;
   margin-top: 1.5rem;
   padding: 1rem;
-  background: #edf2f7;
+  background: rgba(0, 30, 0, 0.6);
+  border: 1px solid #00ff00;
   border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+  animation: statusGlow 2s ease-in-out infinite;
+}
+
+@keyframes statusGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+  }
 }
 
 .spinner {
   width: 20px;
   height: 20px;
-  border: 3px solid #e2e8f0;
-  border-top-color: #667eea;
+  border: 3px solid rgba(0, 255, 0, 0.3);
+  border-top-color: #00ff00;
   border-radius: 50%;
-  animation: spin 0.8s linear infinite;
+  animation: spinGlow 0.8s linear infinite;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
 }
 
-@keyframes spin {
+@keyframes spinGlow {
   to {
     transform: rotate(360deg);
   }
 }
 
 .statusText {
-  color: #667eea;
+  color: #00ff00;
   font-weight: 600;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 8px rgba(0, 255, 0, 0.8);
+  animation: textPulse 1.5s ease-in-out infinite;
 }
 
+@keyframes textPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Terminal cursor effect for current password */
+.password::after {
+  content: '_';
+  display: inline-block;
+  margin-left: 0.25rem;
+  animation: cursorBlink 1s step-end infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Speed indicator */
+.speedMeter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #00dd00;
+  font-family: 'Courier New', monospace;
+}
+
+.speedBar {
+  width: 50px;
+  height: 4px;
+  background: rgba(0, 255, 0, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.speedFill {
+  height: 100%;
+  background: #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+  animation: speedPulse 1s ease-in-out infinite;
+}
+
+@keyframes speedPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .container {
     padding: 1.5rem;
@@ -151,9 +346,113 @@
     gap: 0.5rem;
   }
 
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .percentage {
+    font-size: 1.5rem;
+  }
+
   .statItem {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
+  }
+
+  .progressBarContainer {
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 1.1rem;
+  }
+
+  .percentage {
+    font-size: 1.25rem;
+  }
+
+  .statLabel,
+  .statValue {
+    font-size: 0.85rem;
+  }
+
+  .progressBarContainer {
+    height: 25px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .container::before,
+  .percentage,
+  .progressBar,
+  .progressGlow,
+  .password,
+  .password::after,
+  .statusIndicator,
+  .spinner,
+  .statusText,
+  .speedFill {
+    animation: none !important;
+  }
+
+  .statItem:hover {
+    transform: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .container,
+  .progressBarContainer,
+  .statItem,
+  .statusIndicator,
+  .password {
+    border-width: 2px;
+  }
+
+  .title,
+  .percentage,
+  .statLabel,
+  .statValue,
+  .password,
+  .statusText {
+    text-shadow: none;
+  }
+}
+
+/* Success state */
+.completed .progressBar {
+  background: linear-gradient(90deg, #00ff00 0%, #00ffaa 100%);
+  animation: completePulse 1s ease-in-out infinite;
+}
+
+@keyframes completePulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 255, 0, 1);
+  }
+}
+
+.completed .percentage {
+  color: #00ff00;
+  animation: completeGlow 1s ease-in-out infinite;
+}
+
+@keyframes completeGlow {
+  0%, 100% {
+    text-shadow: 0 0 20px rgba(0, 255, 0, 1), 0 0 40px rgba(0, 255, 0, 0.7);
+  }
+  50% {
+    text-shadow: 0 0 30px rgba(0, 255, 0, 1), 0 0 60px rgba(0, 255, 0, 0.9), 0 0 90px rgba(0, 255, 0, 0.5);
   }
 }
