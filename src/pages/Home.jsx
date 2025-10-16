@@ -116,21 +116,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Warning Section */}
-      <section className={styles.warningSection}>
-        <div className={styles.warningCard}>
-          <div className={styles.warningIcon}>⚠️</div>
-          <div className={styles.warningContent}>
-            <h3 className={styles.warningTitle}>Educational Use Only</h3>
-            <p className={styles.warningText}>
-              This tool is designed for educational purposes to demonstrate cybersecurity concepts. 
-              Unauthorized access to computer systems is illegal. Always use ethical hacking principles 
-              and obtain proper authorization before testing any security measures.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className={styles.ctaSection}>
         <div className={styles.ctaContent}>
